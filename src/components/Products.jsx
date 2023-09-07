@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../API/index.js";
+import { Link } from "react-router-dom";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -23,6 +24,7 @@ export default function Products() {
     return data.map((product) => (
       <div key={product.id}>
         <h3>{product.title}</h3>
+        <Link to={`/products/${product.id}`}>View Product</Link>
         <p>{product.price}</p>
         <p>{product.description}</p>
         <img src={product.image} alt={product.title} />
