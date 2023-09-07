@@ -18,3 +18,19 @@ export async function fetchProducts() {
   }
 }
 fetchProducts();
+
+// GET one product
+export async function fetchOneProduct(productId) {
+  try {
+    const response = await fetch(`${PRODUCTS_API_URL}/${productId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
