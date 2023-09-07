@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar.jsx";
 import Home from "./components/Home.jsx";
 import Products from "./components/Products.jsx";
+import ViewProduct from "./components/ViewProduct.jsx";
 import Footer from "./components/Footer.jsx";
 
 import "./App.css";
@@ -15,6 +16,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:productId" element={<ViewProduct />} />
       </Routes>
 
       <Footer />
