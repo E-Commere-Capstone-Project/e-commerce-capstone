@@ -2,6 +2,21 @@ import { useEffect, useState } from "react";
 import { fetchProducts } from "../API/index.js";
 import { Link, useNavigate } from "react-router-dom";
 import { orderBy, filter } from "lodash";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Image,
+  Stack,
+  Heading,
+  Text,
+  Divider,
+  Button,
+  ButtonGroup,
+  SimpleGrid,
+} from "@chakra-ui/react";
+
+import useShopUser from "./context/UserContext.jsx";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -10,10 +25,12 @@ export default function Products() {
   const [order, setOrder] = useState("asc");
   const [category, setCategory] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [priceMin, setPriceMin] = useState(0);
-  const [priceMax, setPriceMax] = useState(10000);
+  // const [priceMin, setPriceMin] = useState(0);
+  // const [priceMax, setPriceMax] = useState(10000);
 
   const navigate = useNavigate();
+
+  const { addToCart, removeFromCart, cart } = useShopUser();
 
   useEffect(() => {
     async function ProductsFetch() {
@@ -30,16 +47,65 @@ export default function Products() {
     ProductsFetch();
   }, []);
 
+  useEffect(() => {
+    console.log(`useEffect`, cart);
+  }, [cart]);
+
   function handleMapping(data) {
     return data.map((product) => (
-      <div key={product.id} className="product">
-        <Link to={`/products/${product.id}`}>View Product</Link>
-        <h3 onClick={() => navigate(`/products/${product.id}`)}>
-          {product.title}
-        </h3>
-        <p>${product.price}</p>
-        {/* <p>{product.description}</p> */}
-        {/* <img src={product.image} alt={product.title} /> */}
+      // <div key={product.id} className="product">
+      //   <Link to={`/products/${product.id}`}>View Product</Link>
+      //   <h3 onClick={() => navigate(`/products/${product.id}`)}>
+      //     {product.title}
+      //   </h3>
+      //   <p>${product.price}</p>
+      //   {/* <p>{product.description}</p> */}
+      //   {/* <img src={product.image} alt={product.title} /> */}
+      // </div>
+      <div key={product.id} className="product-cont">
+        <Card className="product">
+          <CardBody>
+            <Image
+              src={product.image}
+              alt={product.title}
+              onClick={() => navigate(`/products/${product.id}`)}
+            />
+            <Stack>
+              <Heading size="md">{product.title}</Heading>
+              <Text color="blue.600" fontSize="2xl">
+                ${product.price}
+              </Text>
+            </Stack>
+          </CardBody>
+          <Divider />
+          <CardFooter>
+            <ButtonGroup>
+              <Button variant="solid" colorScheme="blue">
+                <Link to={`/products/${product.id}`}>View Product</Link>
+              </Button>
+              <Button
+                variant="ghost"
+                colorScheme="blue"
+                onClick={() => {
+                  // console.log(cart);
+                  addToCart(product);
+                }}
+              >
+                Add to cart
+              </Button>
+              <Button
+                variant="ghost"
+                colorScheme="blue"
+                onClick={() => {
+                  // console.log(cart);
+                  removeFromCart(product);
+                }}
+              >
+                Remove from cart
+              </Button>
+            </ButtonGroup>
+          </CardFooter>
+        </Card>
       </div>
     ));
   }
@@ -77,79 +143,101 @@ export default function Products() {
   // }
 
   console.log(filteredProducts);
+
   return (
     <>
-      <p>Products</p>
       <div>
         <h3>Sort by: </h3>
-        <button
-          onClick={() => {
-            handleSortProducts(sorter, order === "asc" ? "desc" : "asc");
-          }}
-        >
-          {order === "asc" ? "Desc" : "Asc"}
-        </button>
-        <button
-          onClick={() => {
-            handleSortProducts("title");
-          }}
-        >
-          Name
-        </button>
-        <button
-          onClick={() => {
-            handleSortProducts("price");
-          }}
-        >
-          Price
-        </button>
-        <button
-          onClick={() => {
-            handleSortProducts("id", "asc");
-          }}
-        >
-          Clear sort
-        </button>
+        <ButtonGroup>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              handleSortProducts(sorter, order === "asc" ? "desc" : "asc");
+            }}
+          >
+            {order === "asc" ? "Desc" : "Asc"}
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              handleSortProducts("title");
+            }}
+          >
+            Name
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              handleSortProducts("price");
+            }}
+          >
+            Price
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              handleSortProducts("id", "asc");
+            }}
+          >
+            Clear sort
+          </Button>
+        </ButtonGroup>
       </div>
 
       <div>
         <h3>Filter by: </h3>
         <p>Category: </p>
-        <button
-          onClick={() => {
-            handleFilterCategory("electronics");
-          }}
-        >
-          Electronics
-        </button>
-        <button
-          onClick={() => {
-            handleFilterCategory("jewelery");
-          }}
-        >
-          Jewelry
-        </button>
-        <button
-          onClick={() => {
-            handleFilterCategory("men's clothing");
-          }}
-        >
-          Men&apos;s Clothing
-        </button>
-        <button
-          onClick={() => {
-            handleFilterCategory("women's clothing");
-          }}
-        >
-          Women&apos;s Clothing
-        </button>
-        <button
-          onClick={() => {
-            setFilteredProducts(products);
-          }}
-        >
-          Clear Category
-        </button>
+        <ButtonGroup>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              handleFilterCategory("electronics");
+            }}
+          >
+            Electronics
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              handleFilterCategory("jewelery");
+            }}
+          >
+            Jewelry
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              handleFilterCategory("men's clothing");
+            }}
+          >
+            Men&apos;s Clothing
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              handleFilterCategory("women's clothing");
+            }}
+          >
+            Women&apos;s Clothing
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              setFilteredProducts(products);
+            }}
+          >
+            Clear Category
+          </Button>
+        </ButtonGroup>
         {/* <p>Price: </p>
         <label>
           Min:
@@ -168,7 +256,7 @@ export default function Products() {
           />
         </label> */}
       </div>
-      <div>{products && handleMapping(filteredProducts)}</div>
+      <div id="products">{products && handleMapping(filteredProducts)}</div>
 
       {err && <h3>{err}</h3>}
     </>
