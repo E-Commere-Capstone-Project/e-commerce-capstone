@@ -7,10 +7,11 @@ import Footer from "./components/Footer.jsx";
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
+import { UserProvider } from "./components/context/UserContext.jsx";
 
 export default function App() {
   return (
-    <>
+    <UserProvider>
       <Navbar />
 
       <Routes>
@@ -20,6 +21,6 @@ export default function App() {
       </Routes>
 
       <Footer />
-    </>
+    </UserProvider>
   );
 }
