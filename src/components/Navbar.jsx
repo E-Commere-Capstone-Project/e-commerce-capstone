@@ -4,9 +4,6 @@ import { useEffect } from "react";
 import useShopUser from "./context/UserContext.jsx";
 
 export default function Navbar() {
-  const localLoggedIn = localStorage.getItem("isLoggedIn");
-  const localIsLoggedIn = JSON.parse(localLoggedIn);
-
   const { isLoggedIn, changeIsLoggedIn } = useShopUser();
 
   // console.log("navbar", isLoggedIn);
