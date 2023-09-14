@@ -4,7 +4,13 @@ import userReducer, { initialState } from "./userReducer";
 const UserContext = createContext(initialState);
 
 export const UserProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(userReducer, initialState);
+  const localCart = localStorage.getItem("localCart");
+  const activeCart = localCart ? JSON.parse(localCart) : initialState.cart;
+  console.log(`activeCart: `, activeCart);
+  const [state, dispatch] = useReducer(userReducer, {
+    ...initialState,
+    cart: activeCart,
+  });
 
   const addToCart = (product) => {
     dispatch({
