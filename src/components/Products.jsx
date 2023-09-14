@@ -29,7 +29,7 @@ export default function Products() {
 
   const navigate = useNavigate();
 
-  const { addToCart, removeFromCart, cart } = useShopUser();
+  const { addToCart, cart } = useShopUser();
 
   useEffect(() => {
     async function ProductsFetch() {
