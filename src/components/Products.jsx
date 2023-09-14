@@ -97,7 +97,7 @@ export default function Products() {
               >
                 Add to cart
               </Button>
-              <Button
+              {/* <Button
                 variant="ghost"
                 colorScheme="blue"
                 onClick={() => {
@@ -106,7 +106,7 @@ export default function Products() {
                 }}
               >
                 Remove from cart
-              </Button>
+              </Button> */}
             </ButtonGroup>
           </CardFooter>
         </Card>
