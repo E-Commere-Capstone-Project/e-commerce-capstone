@@ -13,7 +13,6 @@ import {
   Divider,
   Button,
   ButtonGroup,
-  SimpleGrid,
 } from "@chakra-ui/react";
 
 import useShopUser from "./context/UserContext.jsx";
@@ -36,6 +35,9 @@ export default function Products() {
     async function ProductsFetch() {
       try {
         const data = await fetchProducts();
+
+        // if (!localCart) localStorage.setItem("localCart", JSON.stringify([]));
+
         console.log(data);
 
         return setProducts(data), setFilteredProducts(data);
@@ -49,6 +51,7 @@ export default function Products() {
 
   useEffect(() => {
     console.log(`useEffect`, cart);
+    localStorage.setItem("localCart", JSON.stringify(cart));
   }, [cart]);
 
   function handleMapping(data) {
@@ -88,7 +91,8 @@ export default function Products() {
                 colorScheme="blue"
                 onClick={() => {
                   // console.log(cart);
-                  addToCart(product);
+                  // addToCart(product);
+                  handleAddToCart(product);
                 }}
               >
                 Add to cart
@@ -141,6 +145,10 @@ export default function Products() {
   //   );
   //   return setFilteredProducts(filteredPrice);
   // }
+
+  function handleAddToCart(product) {
+    addToCart(product);
+  }
 
   console.log(filteredProducts);
 
