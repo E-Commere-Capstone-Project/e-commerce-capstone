@@ -14,6 +14,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { NumericFormat } from "react-number-format";
+import { useNavigate } from "react-router-dom";
 /*
 Needs to import or receive data in relation to the cart itself and other data relevant
 to the user; cart should have two functionalities, one as a guest checkout and one as a user checkout 
@@ -22,6 +23,8 @@ user should be authenticated for checkout process
 export default function Cart() {
   const { isLoggedIn, cart, addToCart, removeFromCart, updateProduct } =
     useShopUser();
+
+  const navigate = useNavigate();
 
   // console.log(`cart cart`, cart);
 
@@ -70,22 +73,44 @@ export default function Cart() {
     ));
   }
 
+  const cartSubTotal = cart.reduce((acc, cv) => {
+    let productTotal = cv.price * cv.qty;
+    return acc + productTotal;
+  }, 0);
+
   return (
     <div id="cart">
       {handleCartMap(cart)}
-      <div>
-        <p>Cart Total: </p>
-        <NumericFormat
-          value={cart.reduce((acc, cv) => {
-            let productTotal = cv.price * cv.qty;
-            return acc + productTotal;
-          }, 0)}
-          prefix={"$"}
-          decimalScale={2}
-          thousandSeparator={true}
-          displayType={"text"}
-        />
-      </div>
+      <Card>
+        <Heading>Cart Summary</Heading>
+        <Stack>
+          <Text>
+            Subtotal -{" "}
+            <NumericFormat
+              value={cartSubTotal}
+              prefix={"$"}
+              decimalScale={2}
+              thousandSeparator={true}
+              displayType={"text"}
+            />
+          </Text>
+          <Text>Shipping and Handling - $0.00</Text>
+          <Text>Taxes - N/A</Text>
+          <Text>
+            TOTAL -{" "}
+            <NumericFormat
+              value={cartSubTotal}
+              prefix={"$"}
+              decimalScale={2}
+              thousandSeparator={true}
+              displayType={"text"}
+            />
+          </Text>
+        </Stack>
+        <CardFooter>
+          <Button onClick={() => navigate("/cart/checkout")}>Checkout</Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
