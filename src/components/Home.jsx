@@ -5,12 +5,11 @@ export default function Home() {
   return (
     <section>
       <div id="home">
-        <h1>Status Quo</h1>
-        <h3>
-          Shop to your heart&apos;s content and make yourself stand out. Be
-          unique.
-        </h3>
-        <button onClick={() => navigate("/products")}> Shop now</button>
+        <div id="home-content-div">
+          <h1>Status Quo</h1>
+          <h3>Stand out. Be unique.</h3>
+          <button onClick={() => navigate("/products")}> Shop now</button>
+        </div>
       </div>
       <div id="home-under-landing">
         <div id="home-ul-img-cont">
