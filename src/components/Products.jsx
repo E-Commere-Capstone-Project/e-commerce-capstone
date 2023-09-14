@@ -94,16 +94,6 @@ export default function Products() {
               >
                 Add to cart
               </Button>
-              {/* <Button
-                variant="ghost"
-                colorScheme="blue"
-                onClick={() => {
-                  // console.log(cart);
-                  removeFromCart(product);
-                }}
-              >
-                Remove from cart
-              </Button> */}
             </ButtonGroup>
           </CardFooter>
         </Card>
