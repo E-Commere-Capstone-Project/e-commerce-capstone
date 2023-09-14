@@ -41,11 +41,11 @@ const userReducer = (state, action) => {
       console.log("UPDATE_PRODUCT", payload);
       return {
         ...state,
-        cart: state.cart.map((product) => {
-          return product.id === payload.id
-            ? { ...product, qty: product.qty - 1 }
-            : product;
-        }),
+        cart: state.cart.map((product) =>
+          product.id === payload.id
+            ? { ...product, qty: payload.qty - 1 }
+            : product
+        ),
       };
 
     case "IS_LOGGED_IN":
