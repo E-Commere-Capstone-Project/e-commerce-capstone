@@ -35,9 +35,6 @@ export default function Products() {
     async function ProductsFetch() {
       try {
         const data = await fetchProducts();
-
-        // if (!localCart) localStorage.setItem("localCart", JSON.stringify([]));
-
         console.log(data);
 
         return setProducts(data), setFilteredProducts(data);
