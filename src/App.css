@@ -29,3 +29,18 @@
 .product {
   height: 100%;
 }
+
+/* View Product.jsx */
+#product-main-div {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#product-content-div {
+  width: 60%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+}
