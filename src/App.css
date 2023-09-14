@@ -44,3 +44,26 @@
   align-items: center;
   gap: 3em;
 }
+
+/* Cart.jsx */
+
+#cart {
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-product {
+  width: 65%;
+  padding: 1em;
+  gap: 1em;
+}
+
+/* .cart-product-content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+} */
