@@ -1,7 +1,7 @@
 #root {
   /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
   background-color: #e7f5ff;
 }
@@ -13,6 +13,39 @@
   justify-content: space-between;
   padding: 1em;
 }
+
+/* home.jsx */
+#home {
+  background: linear-gradient(0deg, #39322982, #39322982),
+    url("https://images.unsplash.com/photo-1589363460779-cd717d2ed8fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80");
+  background-size: cover;
+  background-position: center center;
+  height: 90vh;
+  min-height: 600px;
+}
+
+#home-under-landing {
+  background-color: #212529;
+  color: #dad3ae;
+  height: 90vh;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#home-ul-img-cont {
+  background: linear-gradient(0deg, #39322982, #39322982),
+    url("https://images.unsplash.com/photo-1592914637125-28479601c75a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80");
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 50%;
+}
+
+#home-ul-content-cont {
+  width: 50%;
+}
+
+/**/
 
 #products {
   display: flex;
