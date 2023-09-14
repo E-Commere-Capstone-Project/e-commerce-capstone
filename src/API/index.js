@@ -54,6 +54,7 @@ export async function fetchLogin(username, password) {
     });
     const result = await response.json();
     console.log(result);
+    return result;
   } catch (error) {
     console.error(`Logged in user`, error);
   }
@@ -85,6 +86,7 @@ export async function fetchRegister(
     });
     const result = await response.json();
     console.log(`New registered user`, result);
+    return result;
   } catch (error) {
     console.error(error);
   }
@@ -102,6 +104,7 @@ export async function fetchDeleteUser(userId, token) {
     });
     const result = await response.json();
     console.log(`User deleted`, result);
+    return result;
   } catch (error) {
     console.error(error);
   }
@@ -138,6 +141,7 @@ export async function fetchUpdateUser(
     });
     const result = await response.json();
     console.log(`Updated user data`, result);
+    return result;
   } catch (error) {
     console.error(error);
   }
