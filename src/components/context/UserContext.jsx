@@ -6,10 +6,19 @@ const UserContext = createContext(initialState);
 export const UserProvider = ({ children }) => {
   const localCart = localStorage.getItem("localCart");
   const activeCart = localCart ? JSON.parse(localCart) : initialState.cart;
+
   console.log(`activeCart: `, activeCart);
+
+  const localLoggedIn = localStorage.getItem("isLoggedIn");
+  const activeLogin = JSON.parse(localLoggedIn)
+    ? JSON.parse(localLoggedIn)
+    : initialState.isLoggedIn;
+  // console.log(`active Login`, activeLogin);
+
   const [state, dispatch] = useReducer(userReducer, {
     ...initialState,
     cart: activeCart,
+    isLoggedIn: activeLogin,
   });
 
   const addToCart = (product) => {
