@@ -5,6 +5,7 @@ import ViewProduct from "./components/ViewProduct.jsx";
 import Footer from "./components/Footer.jsx";
 import Login from "./components/Login.jsx";
 import Cart from "./components/Cart.jsx";
+import Checkout from "./components/Checkout.jsx";
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/products/:productId" element={<ViewProduct />} />
         <Route path="/users/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/cart/checkout" element={<Checkout />} />
       </Routes>
 
       <Footer />
