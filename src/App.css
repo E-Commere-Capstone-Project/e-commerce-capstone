@@ -22,6 +22,33 @@
   background-position: center center;
   height: 90vh;
   min-height: 600px;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: end;
+}
+
+#home-content-div {
+  color: #b8a43f;
+  padding-right: 2em;
+}
+
+#home-content-div h1 {
+  font-family: "Playfair Display SC", serif;
+  font-weight: bold;
+  font-size: 8em;
+}
+
+#home-content-div h3 {
+  font-family: "Lato", sans-serif;
+  font-weight: light;
+  font-size: 1.75em;
+}
+
+#home-content-div button {
+  font-family: "Lato", sans-serif;
+  font-weight: normal;
+  font-size: 1.25em;
 }
 
 #home-under-landing {
@@ -43,6 +70,21 @@
 
 #home-ul-content-cont {
   width: 50%;
+  padding: 0.5em 1.5em;
+  text-align: left;
+}
+
+#home-ul-content-cont h2 {
+  font-family: "Playfair Display SC", serif;
+  font-weight: normal;
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+
+#home-ul-content-cont p {
+  font-family: "Lato", sans-serif;
+  font-weight: light;
+  font-size: 1.5em;
 }
 
 /**/
