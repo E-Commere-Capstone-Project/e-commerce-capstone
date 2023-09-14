@@ -1,6 +1,7 @@
 export const initialState = {
   products: [],
   cart: [],
+  isLoggedIn: false,
 };
 
 const userReducer = (state, action) => {
@@ -34,6 +35,14 @@ const userReducer = (state, action) => {
       return {
         ...state,
         cart: state.cart.filter((product) => product.id !== payload.id),
+      };
+
+    case "IS_LOGGED_IN":
+      // console.log("IS_LOGGED_IN", payload);
+
+      return {
+        ...state,
+        isLoggedIn: payload,
       };
 
     default:

@@ -26,11 +26,20 @@ export const UserProvider = ({ children }) => {
     });
   };
 
+  const changeIsLoggedIn = (boolean) => {
+    dispatch({
+      type: "IS_LOGGED_IN",
+      payload: boolean,
+    });
+  };
+
   const value = {
     products: state.products,
     cart: state.cart,
     addToCart,
     removeFromCart,
+    changeIsLoggedIn,
+    isLoggedIn: state.isLoggedIn,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
