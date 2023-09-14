@@ -44,6 +44,11 @@ export default function Navbar() {
                 Log out
               </Button>
             )}
+            <Link to="/cart">
+              <Button variant="solid" colorScheme="blue">
+                Cart
+              </Button>
+            </Link>
           </ButtonGroup>
         </nav>
       </div>
