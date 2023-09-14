@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useShopUser from "./context/UserContext.jsx";
 
 export default function Navbar() {
-  const { isLoggedIn, changeIsLoggedIn } = useShopUser();
+  const { isLoggedIn, changeIsLoggedIn, cart } = useShopUser();
 
   // console.log("navbar", isLoggedIn);
 
@@ -13,10 +13,18 @@ export default function Navbar() {
     console.log(`login state`, isLoggedIn);
   }, [isLoggedIn]);
 
+  useEffect(() => {}, [cart]);
+
   function handleLogOut() {
     localStorage.setItem("isLoggedIn", JSON.stringify(false));
     changeIsLoggedIn(false);
   }
+
+  const cartQty = cart.reduce((acc, cv) => {
+    return acc + cv.qty;
+  }, 0);
+
+  // console.log(`# of items in cart: `, cartQty);
 
   return (
     <header id="navbar">
@@ -46,7 +54,7 @@ export default function Navbar() {
             )}
             <Link to="/cart">
               <Button variant="solid" colorScheme="blue">
-                Cart
+                Cart ({cartQty})
               </Button>
             </Link>
           </ButtonGroup>
