@@ -37,6 +37,17 @@ const userReducer = (state, action) => {
         cart: state.cart.filter((product) => product.id !== payload.id),
       };
 
+    case "UPDATE_PRODUCT":
+      console.log("UPDATE_PRODUCT", payload);
+      return {
+        ...state,
+        cart: state.cart.map((product) => {
+          return product.id === payload.id
+            ? { ...product, qty: product.qty - 1 }
+            : product;
+        }),
+      };
+
     case "IS_LOGGED_IN":
       // console.log("IS_LOGGED_IN", payload);
 
