@@ -42,6 +42,13 @@ export const UserProvider = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    dispatch({
+      type: "CLEAR_CART",
+      payload: "Cart has been cleared",
+    });
+  };
+
   const changeIsLoggedIn = (boolean) => {
     dispatch({
       type: "IS_LOGGED_IN",
@@ -55,6 +62,7 @@ export const UserProvider = ({ children }) => {
     addToCart,
     removeFromCart,
     updateProduct,
+    clearCart,
     changeIsLoggedIn,
     isLoggedIn: state.isLoggedIn,
   };

@@ -48,6 +48,13 @@ const userReducer = (state, action) => {
         ),
       };
 
+    case "CLEAR_CART":
+      console.log("CLEAR_CART", payload);
+      return {
+        ...state,
+        cart: initialState.cart,
+      };
+
     case "IS_LOGGED_IN":
       // console.log("IS_LOGGED_IN", payload);
 
