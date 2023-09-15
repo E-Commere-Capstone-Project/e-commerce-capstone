@@ -142,3 +142,11 @@
   flex-flow: row wrap;
   justify-content: space-between;
 } */
+
+/* checkout.jsx (shipping, payment, confirmCheckout) */
+.checkout-tabs {
+  width: 45%;
+  margin: 2em 4em;
+  padding: 2em;
+  background-color: #e0e0dedf;
+}
