@@ -3,8 +3,9 @@ Needs imports to be able to work: useEffect and useNavigate at minimum
 */
 
 export default function Profile() {
+  return <h1>Profile</h1>;
   /*
-
+                    
   use a useEffect to be able to display the profile data for the logged in user
   useEffect(()=>{
     async function profileFetch() {
