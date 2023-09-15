@@ -6,6 +6,8 @@ import Footer from "./components/Footer.jsx";
 import Login from "./components/Login.jsx";
 import Cart from "./components/Cart.jsx";
 import Checkout from "./components/Checkout.jsx";
+import Profile from "./components/Profile.jsx";
+import OrderStatus from "./components/checkout/OrderStatus.jsx";
 
 import "./App.css";
 
@@ -22,8 +24,10 @@ export default function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:productId" element={<ViewProduct />} />
         <Route path="/users/login" element={<Login />} />
+        <Route path="/users/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/cart/checkout" element={<Checkout />} />
+        <Route path="/cart/checkout/success" element={<OrderStatus />} />
       </Routes>
 
       <Footer />
