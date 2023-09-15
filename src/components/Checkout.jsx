@@ -11,10 +11,15 @@ import {
   useSteps,
   Box,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import useShopUser from "./context/UserContext";
+import Shipping from "./checkout/Shipping.jsx";
+import Payment from "./checkout/Payment.jsx";
+import ConfirmCheckout from "./checkout/ConfirmCheckout.jsx";
 
 export default function Checkout() {
   const { isLoggedIn, cart } = useShopUser();
+  // const [checkoutStep, setCheckoutStep] = useState(0);
   const steps = [
     { title: "Shipping" },
     { title: "Payment and Billing" },
@@ -29,7 +34,7 @@ export default function Checkout() {
   return (
     <>
       <h2>Checkout</h2>
-      <Stepper index={activeStep}>
+      <Stepper m="1em" p="1em" index={activeStep}>
         {steps.map((step, index) => (
           <Step key={index} onClick={() => setActiveStep(index)}>
             <StepIndicator>
@@ -46,6 +51,27 @@ export default function Checkout() {
           </Step>
         ))}
       </Stepper>
+      {/* 
+        use a state to control component displayed
+        as you step through the components it will update the displayed component and active step
+        onClick={setStep(step +=1)}
+
+      */}
+      <div>
+        {/* <p>{activeStep}</p> */}
+        {activeStep === 0 && (
+          <Shipping activeStep={activeStep} onSetActiveStep={setActiveStep} />
+        )}
+        {activeStep === 1 && (
+          <Payment activeStep={activeStep} onSetActiveStep={setActiveStep} />
+        )}
+        {activeStep === 2 && (
+          <ConfirmCheckout
+            activeStep={activeStep}
+            onSetActiveStep={setActiveStep}
+          />
+        )}
+      </div>
     </>
   );
 }
