@@ -81,36 +81,44 @@ export default function Cart() {
   return (
     <div id="cart">
       {handleCartMap(cart)}
-      <Card>
-        <Heading>Cart Summary</Heading>
-        <Stack>
-          <Text>
-            Subtotal -{" "}
-            <NumericFormat
-              value={cartSubTotal}
-              prefix={"$"}
-              decimalScale={2}
-              thousandSeparator={true}
-              displayType={"text"}
-            />
-          </Text>
-          <Text>Shipping and Handling - $0.00</Text>
-          <Text>Taxes - N/A</Text>
-          <Text>
-            TOTAL -{" "}
-            <NumericFormat
-              value={cartSubTotal}
-              prefix={"$"}
-              decimalScale={2}
-              thousandSeparator={true}
-              displayType={"text"}
-            />
-          </Text>
-        </Stack>
-        <CardFooter>
-          <Button onClick={() => navigate("/cart/checkout")}>Checkout</Button>
-        </CardFooter>
-      </Card>
+      {cart.length < 1 && (
+        <>
+          <Heading>There are no items in your cart</Heading>
+          <Text onClick={() => navigate("/products")}>Start shopping now</Text>
+        </>
+      )}
+      {cart.length > 0 && (
+        <Card>
+          <Heading>Cart Summary</Heading>
+          <Stack>
+            <Text>
+              Subtotal -{" "}
+              <NumericFormat
+                value={cartSubTotal}
+                prefix={"$"}
+                decimalScale={2}
+                thousandSeparator={true}
+                displayType={"text"}
+              />
+            </Text>
+            <Text>Shipping and Handling - $0.00</Text>
+            <Text>Taxes - N/A</Text>
+            <Text>
+              TOTAL -{" "}
+              <NumericFormat
+                value={cartSubTotal}
+                prefix={"$"}
+                decimalScale={2}
+                thousandSeparator={true}
+                displayType={"text"}
+              />
+            </Text>
+          </Stack>
+          <CardFooter>
+            <Button onClick={() => navigate("/cart/checkout")}>Checkout</Button>
+          </CardFooter>
+        </Card>
+      )}
     </div>
   );
 }
