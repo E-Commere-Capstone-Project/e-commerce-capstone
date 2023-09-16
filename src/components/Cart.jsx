@@ -68,7 +68,14 @@ export default function Cart() {
             <Button onClick={() => addToCart(product)}>+</Button>
           </CardFooter>
         </Stack>
-        <p>Product Total: ${product.price * product.qty}</p>
+        <p>Product Total:</p>
+        <NumericFormat
+          value={product.price * product.qty}
+          prefix={"$"}
+          decimalScale={2}
+          thousandSeparator={true}
+          displayType={"text"}
+        />
       </Card>
     ));
   }
