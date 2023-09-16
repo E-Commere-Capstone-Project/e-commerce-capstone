@@ -7,38 +7,59 @@ import {
   FormErrorMessage,
   Input,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 // import useShopUser from "./context/UserContext.jsx";
 
 export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const isEmpty = password === "";
+  // const isEmpty = password === "";
 
   // const { changeIsLoggedIn } = useShopUser();
 
   const navigate = useNavigate();
+  const toast = useToast();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const user = await fetchRegisterUser(
-      email,
-      username,
-      password,
-      firstName,
-      lastName
-    );
-    console.log(`New Registered User`, user);
-    // onSetIsLoggedIn(true);
-    setUsername("");
-    setPassword("");
-    setTimeout(() => {
-      navigate("/users/login");
-    }, 2000);
+    setErrorMessage("");
+    if (password === confirmPassword && password !== "") {
+      const user = await fetchRegisterUser(
+        email,
+        username,
+        password,
+        firstName,
+        lastName
+      );
+      console.log(`New Registered User`, user);
+      // onSetIsLoggedIn(true);
+      setUsername("");
+      setPassword("");
+      setTimeout(() => {
+        navigate("/users/login");
+      }, 2000);
+    } else {
+      setErrorMessage("Password fields do not match.");
+      handleErrorMessage();
+    }
+  }
+
+  function handleErrorMessage() {
+    toast({
+      title: `Password Error`,
+      description: `${errorMessage}`,
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+      position: "bottom",
+    });
   }
 
   return (
@@ -75,21 +96,26 @@ export default function Register() {
           onChange={(e) => setUsername(e.target.value)}
         />
       </FormControl>
-      <FormControl isInvalid={isEmpty}>
+      <FormControl isRequired>
         <FormLabel>Password</FormLabel>
         <Input
           type="text"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {!isEmpty ? (
-          ""
-        ) : (
-          <FormErrorMessage>Password is required.</FormErrorMessage>
-        )}
+      </FormControl>
+      <FormControl isRequired>
+        <FormLabel>Confirm Password</FormLabel>
+        <Input
+          type="text"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
       </FormControl>
 
-      <Button>Register Now</Button>
+      <button onClick={() => (errorMessage ? handleErrorMessage() : "")}>
+        Register Now
+      </button>
     </form>
   );
 }
