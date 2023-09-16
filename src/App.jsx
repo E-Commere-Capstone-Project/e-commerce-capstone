@@ -2,12 +2,13 @@ import Navbar from "./components/Navbar.jsx";
 import Home from "./components/Home.jsx";
 import Products from "./components/Products.jsx";
 import ViewProduct from "./components/ViewProduct.jsx";
-import Footer from "./components/Footer.jsx";
 import Login from "./components/Login.jsx";
+import Profile from "./components/Profile.jsx";
+import Register from "./components/Register.jsx";
 import Cart from "./components/Cart.jsx";
 import Checkout from "./components/Checkout.jsx";
-import Profile from "./components/Profile.jsx";
 import OrderStatus from "./components/checkout/OrderStatus.jsx";
+import Footer from "./components/Footer.jsx";
 
 import "./App.css";
 
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:productId" element={<ViewProduct />} />
         <Route path="/users/login" element={<Login />} />
+        <Route path="/users/register" element={<Register />} />
         <Route path="/users/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/cart/checkout" element={<Checkout />} />
