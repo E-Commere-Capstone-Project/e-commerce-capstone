@@ -3,11 +3,12 @@
   margin: 0 auto;
   /* padding: 2rem; */
   text-align: center;
-  background-color: #e7f5ff;
+  background-color: #212529;
+  min-height: 100vh;
 }
 
 #navbar {
-  background-color: #a5d8ff;
+  background-color: #212529;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -120,6 +121,11 @@
   gap: 3em;
 }
 
+#product-sorter,
+#product-filter {
+  color: #dad3ae;
+}
+
 /* Cart.jsx */
 
 #cart {
@@ -148,5 +154,13 @@
   width: 45%;
   margin: 2em 4em;
   padding: 2em;
-  background-color: #e0e0dedf;
+  background-color: #baba8fdf;
+}
+
+#register-form,
+#login-form {
+  width: 60%;
+  margin: 2em;
+  padding: 2em;
+  background-color: #baba8fdf;
 }
