@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { fetchLogin } from "../API/index.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
   Input,
+  Heading,
+  Text,
+  Button,
 } from "@chakra-ui/react";
 import useShopUser from "./context/UserContext.jsx";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const isEmpty = password === "";
+  // const isEmpty = password === "";
 
   const { changeIsLoggedIn } = useShopUser();
 
@@ -35,6 +37,7 @@ export default function Login() {
 
   return (
     <form method="POST" onSubmit={handleSubmit} id="login-form">
+      <Heading>Sign In</Heading>
       <FormControl isRequired>
         <FormLabel>Username</FormLabel>
         <Input
@@ -51,6 +54,8 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </FormControl>
+      <Text>Don&apos;t have an account?</Text>
+      <Link to="/users/register">Sign up today</Link>
 
       <button>Log in</button>
     </form>
