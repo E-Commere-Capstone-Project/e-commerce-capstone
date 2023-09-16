@@ -34,26 +34,24 @@ export default function Login() {
   }
 
   return (
-    <form method="POST" onSubmit={handleSubmit}>
+    <form method="POST" onSubmit={handleSubmit} id="login-form">
       <FormControl isRequired>
         <FormLabel>Username</FormLabel>
         <Input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-        />
+        />{" "}
+      </FormControl>
+      <FormControl>
         <FormLabel>Password</FormLabel>
         <Input
           type="text"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {!isEmpty ? (
-          ""
-        ) : (
-          <FormErrorMessage>Password is required.</FormErrorMessage>
-        )}
       </FormControl>
+
       <button>Log in</button>
     </form>
   );
