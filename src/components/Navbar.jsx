@@ -28,7 +28,9 @@ export default function Navbar() {
 
   return (
     <header id="navbar">
-      <Heading>Status Quo</Heading>
+      <Heading color="#b8a43f" fontFamily="Playfair Display SC, serif">
+        Status Quo
+      </Heading>
       <div>
         <nav>
           <ButtonGroup>
