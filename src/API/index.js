@@ -61,7 +61,7 @@ export async function fetchLogin(username, password) {
 }
 
 // POST register a new user
-export async function fetchRegister(
+export async function fetchRegisterUser(
   email,
   username,
   password,
