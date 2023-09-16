@@ -83,8 +83,14 @@ export default function Cart() {
       {handleCartMap(cart)}
       {cart.length < 1 && (
         <>
-          <Heading>There are no items in your cart</Heading>
-          <Text onClick={() => navigate("/products")}>Start shopping now</Text>
+          <Heading color="#dad3ae">There are no items in your cart</Heading>
+          <Button
+            onClick={() => navigate("/products")}
+            variant="ghost"
+            color="#dad3ae"
+          >
+            Start shopping now
+          </Button>
         </>
       )}
       {cart.length > 0 && (
