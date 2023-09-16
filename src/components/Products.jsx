@@ -13,6 +13,8 @@ import {
   Divider,
   Button,
   ButtonGroup,
+  useToast,
+  Box,
 } from "@chakra-ui/react";
 
 import useShopUser from "./context/UserContext.jsx";
@@ -26,10 +28,11 @@ export default function Products() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   // const [priceMin, setPriceMin] = useState(0);
   // const [priceMax, setPriceMax] = useState(10000);
+  const toast = useToast();
 
   const navigate = useNavigate();
 
-  const { addToCart, cart } = useShopUser();
+  const { addToCart, cart, isLoggedIn } = useShopUser();
 
   useEffect(() => {
     async function ProductsFetch() {
@@ -89,7 +92,20 @@ export default function Products() {
                 onClick={() => {
                   // console.log(cart);
                   // addToCart(product);
-                  handleAddToCart(product);
+
+                  if (!isLoggedIn) {
+                    toast({
+                      title: `You are not logged in.`,
+                      description:
+                        "You must be logged in to add items to your cart.",
+                      status: "error",
+                      duration: 5000,
+                      isClosable: true,
+                      position: "bottom",
+                    });
+                  } else {
+                    handleAddToCart(product);
+                  }
                 }}
               >
                 Add to cart
@@ -141,7 +157,7 @@ export default function Products() {
 
   return (
     <>
-      <div>
+      <div id="product-sorter">
         <h3>Sort by: </h3>
         <ButtonGroup>
           <Button
@@ -183,9 +199,8 @@ export default function Products() {
         </ButtonGroup>
       </div>
 
-      <div>
+      <div id="product-filter">
         <h3>Filter by: </h3>
-        <p>Category: </p>
         <ButtonGroup>
           <Button
             variant="solid"
@@ -233,23 +248,6 @@ export default function Products() {
             Clear Category
           </Button>
         </ButtonGroup>
-        {/* <p>Price: </p>
-        <label>
-          Min:
-          <input
-            type="number"
-            value={priceMin}
-            onChange={(e) => setPriceMin(e.target.value)}
-          />
-        </label>
-        <label>
-          Max:
-          <input
-            type="number"
-            value={priceMax}
-            onChange={(e) => setPriceMax(e.target.value)}
-          />
-        </label> */}
       </div>
       <div id="products">{products && handleMapping(filteredProducts)}</div>
 
