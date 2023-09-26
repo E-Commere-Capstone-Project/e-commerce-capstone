@@ -18,6 +18,7 @@ export default function Navbar() {
   function handleLogOut() {
     localStorage.setItem("isLoggedIn", JSON.stringify(false));
     changeIsLoggedIn(false);
+    localStorage.setItem("userToken", JSON.stringify(null));
   }
 
   const cartQty = cart.reduce((acc, cv) => {
@@ -61,7 +62,7 @@ export default function Navbar() {
             )}
             <Link to="/cart">
               <Button borderRadius="0" variant="solid" colorScheme="yellow">
-                Cart {cartQty > 0 && <Text>({cartQty})</Text>}
+                Cart {isLoggedIn && cartQty > 0 && <Text>({cartQty})</Text>}
               </Button>
             </Link>
           </ButtonGroup>

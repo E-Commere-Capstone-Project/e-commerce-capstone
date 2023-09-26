@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 
 import useShopUser from "./context/UserContext.jsx";
+import { fetchAddToCart } from "../API/index.js";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -31,6 +32,7 @@ export default function Products() {
   const toast = useToast();
 
   const navigate = useNavigate();
+  const userToken = localStorage.getItem("userToken");
 
   const { addToCart, cart, isLoggedIn } = useShopUser();
 
@@ -69,12 +71,12 @@ export default function Products() {
         <Card className="product">
           <CardBody>
             <Image
-              src={product.image}
-              alt={product.title}
+              src={product.product_image}
+              alt={product.name}
               onClick={() => navigate(`/products/${product.id}`)}
             />
             <Stack>
-              <Heading size="md">{product.title}</Heading>
+              <Heading size="md">{product.name}</Heading>
               <Text color="blue.600" fontSize="2xl">
                 ${product.price}
               </Text>
@@ -149,8 +151,10 @@ export default function Products() {
   //   return setFilteredProducts(filteredPrice);
   // }
 
-  function handleAddToCart(product) {
+  async function handleAddToCart(product) {
     addToCart(product);
+    const response = await fetchAddToCart(JSON.parse(userToken), product.id, 1);
+    return response;
   }
 
   console.log(filteredProducts);

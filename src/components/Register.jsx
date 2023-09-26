@@ -15,7 +15,7 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [telephone, setTelephone] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -32,13 +32,13 @@ export default function Register() {
     setErrorMessage("");
     if (password === confirmPassword && password !== "") {
       const user = await fetchRegisterUser(
-        email,
         username,
         password,
         firstName,
-        lastName
+        lastName,
+        telephone
       );
-      console.log(`New Registered User`, user);
+      console.log(`JSX: New Registered User`, user);
       // onSetIsLoggedIn(true);
       setUsername("");
       setPassword("");
@@ -81,11 +81,13 @@ export default function Register() {
         />
       </FormControl>
       <FormControl isRequired>
-        <FormLabel>Email Address</FormLabel>
+        <FormLabel>Telephone</FormLabel>
         <Input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="tel"
+          value={telephone}
+          pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+          maxLength={10}
+          onChange={(e) => setTelephone(e.target.value)}
         />
       </FormControl>
       <FormControl isRequired>

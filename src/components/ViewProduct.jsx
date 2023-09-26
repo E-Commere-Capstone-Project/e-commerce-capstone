@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchOneProduct } from "../API/index.js";
-import { Button, Image } from "@chakra-ui/react";
+import { Button, Image, useToast } from "@chakra-ui/react";
 import useShopUser from "./context/UserContext.jsx";
 
 export default function ViewProduct() {
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
-  const { addToCart, cart } = useShopUser();
+  const { addToCart, cart, isLoggedIn } = useShopUser();
+
+  const toast = useToast();
 
   let { productId } = useParams();
   // const navigate = useNavigate();
@@ -44,20 +46,34 @@ export default function ViewProduct() {
         <div id="product-main-div">
           <div id="product-image-div">
             <Image
-              src={product.image}
-              alt={product.title}
+              src={product.product_image}
+              alt={product.name}
               maxW={{ base: "100%", sm: "450px" }}
             />
           </div>
           <div id="product-content-div">
-            <h2>{product.title}</h2>
+            <h2>{product.name}</h2>
             <p>{product.category}</p>
             <p>{product.description}</p>
             <p>{product.price}</p>
             <Button
               variant="solid"
               colorScheme="blue"
-              onClick={() => addToCart(product)}
+              onClick={() => {
+                if (!isLoggedIn) {
+                  toast({
+                    title: `You are not logged in.`,
+                    description:
+                      "You must be logged in to add items to your cart.",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                    position: "bottom",
+                  });
+                } else {
+                  addToCart(product);
+                }
+              }}
             >
               Add to cart
             </Button>

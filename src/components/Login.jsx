@@ -28,7 +28,7 @@ export default function Login() {
     setUsername("");
     setPassword("");
     localStorage.setItem("isLoggedIn", JSON.stringify(true));
-    localStorage.setItem("userToken", JSON.stringify(user.token));
+    localStorage.setItem("userToken", JSON.stringify(user.userToken));
     changeIsLoggedIn(true);
     setTimeout(() => {
       navigate("/");
