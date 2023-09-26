@@ -8,6 +8,8 @@ import Register from "./components/Register.jsx";
 import Cart from "./components/Cart.jsx";
 import Checkout from "./components/Checkout.jsx";
 import OrderStatus from "./components/checkout/OrderStatus.jsx";
+import AdminLogin from "./components/AdminLogin.jsx";
+import AdminAccount from "./components/AdminAccount.jsx";
 import Footer from "./components/Footer.jsx";
 
 import "./App.css";
@@ -26,6 +28,8 @@ export default function App() {
         <Route path="/products/:productId" element={<ViewProduct />} />
         <Route path="/users/login" element={<Login />} />
         <Route path="/users/register" element={<Register />} />
+        <Route path="/users/admin/login" element={<AdminLogin />} />
+        <Route path="/users/admin/account" element={<AdminAccount />} />
         <Route path="/users/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/cart/checkout" element={<Checkout />} />
