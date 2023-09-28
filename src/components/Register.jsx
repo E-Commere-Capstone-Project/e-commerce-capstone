@@ -109,7 +109,7 @@ export default function Register() {
           <FormLabel color="#734C58">Password</FormLabel>
           <Input
             borderRadius="0"
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -117,7 +117,7 @@ export default function Register() {
         <FormControl isRequired>
           <FormLabel color="#734C58">Confirm Password</FormLabel>
           <Input
-            type="text"
+            type="password"
             borderRadius="0"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}

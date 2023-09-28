@@ -53,7 +53,7 @@ export default function AdminLogin() {
           <FormLabel color="#734C58">Password</FormLabel>
           <Input
             borderRadius="0"
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
