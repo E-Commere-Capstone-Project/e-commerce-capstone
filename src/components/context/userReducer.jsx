@@ -9,7 +9,7 @@ const userReducer = (state, action) => {
 
   switch (type) {
     case "ADD_TO_CART":
-      console.log("ADD_TO_CART", payload);
+      // console.log("ADD_TO_CART", payload);
 
       const isInCart = state.cart.find((product) => product.id === payload.id);
 
@@ -30,7 +30,7 @@ const userReducer = (state, action) => {
       }
 
     case "REMOVE_FROM_CART":
-      console.log("REMOVE_FROM_CART", payload);
+      // console.log("REMOVE_FROM_CART", payload);
 
       return {
         ...state,
@@ -38,7 +38,7 @@ const userReducer = (state, action) => {
       };
 
     case "UPDATE_PRODUCT":
-      console.log("UPDATE_PRODUCT", payload);
+      // console.log("UPDATE_PRODUCT", payload);
       return {
         ...state,
         cart: state.cart.map((product) =>
@@ -49,7 +49,7 @@ const userReducer = (state, action) => {
       };
 
     case "CLEAR_CART":
-      console.log("CLEAR_CART", payload);
+      // console.log("CLEAR_CART", payload);
       return {
         ...state,
         cart: initialState.cart,

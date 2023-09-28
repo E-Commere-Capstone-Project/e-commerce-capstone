@@ -10,7 +10,7 @@ export default function Navbar() {
 
   useEffect(() => {
     // if (isLoggedIn === true) return;
-    console.log(`login state`, isLoggedIn);
+    // console.log(`login state`, isLoggedIn);
   }, [isLoggedIn]);
 
   useEffect(() => {}, [cart]);

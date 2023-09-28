@@ -47,7 +47,7 @@ export default function Cart() {
         if (!isLoggedIn) navigate("/users/login");
         const data = await fetchCart(JSON.parse(userToken));
 
-        console.log(data);
+        // console.log(data);
 
         return setUserCart(data);
       } catch (error) {
@@ -59,7 +59,7 @@ export default function Cart() {
   }, [userToken]);
 
   useEffect(() => {
-    console.log(`useEffect`, cart);
+    // console.log(`useEffect`, cart);
     localStorage.setItem("localCart", JSON.stringify(cart));
   }, [cart]);
 

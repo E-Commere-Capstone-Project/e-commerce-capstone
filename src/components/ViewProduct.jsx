@@ -25,7 +25,7 @@ export default function ViewProduct() {
     async function ProductFetch() {
       try {
         const data = await fetchOneProduct(productId);
-        console.log(data);
+        // console.log(data);
         return setProduct(data);
       } catch (error) {
         setError(error);
@@ -36,7 +36,7 @@ export default function ViewProduct() {
   }, [productId]);
 
   useEffect(() => {
-    console.log(`useEffect`, cart);
+    // console.log(`useEffect`, cart);
     localStorage.setItem("localCart", JSON.stringify(cart));
   }, [cart]);
 

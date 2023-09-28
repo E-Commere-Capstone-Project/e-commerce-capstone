@@ -1,6 +1,6 @@
 import { Heading, Button, ButtonGroup } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import useShopUser from "../context/UserContext";
 
 export default function ConfirmCheckout({ activeStep, onSetActiveStep }) {

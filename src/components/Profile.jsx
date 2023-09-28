@@ -20,7 +20,7 @@ export default function Profile() {
       try {
         if (!isLoggedIn) navigate("/users/login");
         const data = await fetchAccount(JSON.parse(localToken));
-        console.log(data);
+        // console.log(data);
 
         return setUser(data);
       } catch (error) {

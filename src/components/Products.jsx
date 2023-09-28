@@ -40,7 +40,7 @@ export default function Products() {
     async function ProductsFetch() {
       try {
         const data = await fetchProducts();
-        console.log(data);
+        // console.log(data);
 
         return setProducts(data), setFilteredProducts(data);
       } catch (error) {
@@ -52,7 +52,7 @@ export default function Products() {
   }, []);
 
   useEffect(() => {
-    console.log(`useEffect`, cart);
+    // console.log(`useEffect`, cart);
     localStorage.setItem("localCart", JSON.stringify(cart));
   }, [cart]);
 
@@ -164,7 +164,7 @@ export default function Products() {
     return response;
   }
 
-  console.log(filteredProducts);
+  // console.log(filteredProducts);
 
   return (
     <section id="products-page">

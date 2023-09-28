@@ -65,7 +65,7 @@ export async function fetchAddNewProduct(
       }),
     });
     const result = await response.json();
-    console.log("API: ADDED NEW PRODUCT ", result);
+    // console.log("API: ADDED NEW PRODUCT ", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -100,7 +100,7 @@ export async function fetchPatchProduct(
       }),
     });
     const result = await response.json();
-    console.log("API: UPDATED PRODUCT ", result);
+    // console.log("API: UPDATED PRODUCT ", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -118,7 +118,7 @@ export async function fetchDeleteProduct(token, productId) {
       },
     });
     const result = await response.json();
-    console.log("API: DELETED PRODUCT ", result);
+    // console.log("API: DELETED PRODUCT ", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -156,7 +156,7 @@ export async function fetchLogin(username, password) {
       }),
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result;
   } catch (error) {
     console.error(`Logged in user`, error);
@@ -186,7 +186,7 @@ export async function fetchRegisterUser(
       }),
     });
     const result = await response.json();
-    console.log(`API: New registered user`, result);
+    // console.log(`API: New registered user`, result);
     return result;
   } catch (error) {
     console.error(error);
@@ -204,7 +204,7 @@ export async function fetchDeleteUser(userId, token) {
       },
     });
     const result = await response.json();
-    console.log(`User deleted`, result);
+    // console.log(`User deleted`, result);
     return result;
   } catch (error) {
     console.error(error);
@@ -259,7 +259,7 @@ export async function fetchCart(token) {
       },
     });
     const result = await response.json();
-    console.log("API: USER CART:", result);
+    // console.log("API: USER CART:", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -281,7 +281,7 @@ export async function fetchAddToCart(token, productId, quantity) {
       }),
     });
     const result = await response.json();
-    console.log("API: ADDED TO CART:", result);
+    // console.log("API: ADDED TO CART:", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -303,7 +303,7 @@ export async function fetchUpdateCart(token, productId, quantity) {
       }),
     });
     const result = await response.json();
-    console.log("API: UPDATED ITEM IN CART:", result);
+    // console.log("API: UPDATED ITEM IN CART:", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -324,7 +324,7 @@ export async function fetchRemoveFromCart(token, productId) {
       }),
     });
     const result = await response.json();
-    console.log("API: REMOVED FROM CART: ", result);
+    // console.log("API: REMOVED FROM CART: ", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -342,7 +342,7 @@ export async function fetchRemoveCartAll(token) {
       },
     });
     const result = await response.json();
-    console.log("API: REMOVED ALL FROM CART: ", result);
+    // console.log("API: REMOVED ALL FROM CART: ", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -364,7 +364,7 @@ export async function fetchAdminLogin(username, password) {
       }),
     });
     const result = await response.json();
-    console.log("API: ADMIN LOGIN ", result);
+    // console.log("API: ADMIN LOGIN ", result);
     return result;
   } catch (error) {
     console.error(error);
@@ -382,7 +382,7 @@ export async function fetchAdminUser(token) {
       },
     });
     const result = await response.json();
-    console.log("API: ADMIN USER ", result);
+    // console.log("API: ADMIN USER ", result);
     return result;
   } catch (error) {
     console.error(error);

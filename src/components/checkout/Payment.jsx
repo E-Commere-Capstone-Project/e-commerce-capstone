@@ -19,10 +19,6 @@ export default function Payment({ activeStep, onSetActiveStep }) {
   const [date, setDate] = useState("");
   const [cvv, setCvv] = useState("");
 
-  function checkIfError(input) {
-    return input === "";
-  }
-
   return (
     <div className="checkout-tabs">
       <Heading color="#532C38">Payment Information</Heading>

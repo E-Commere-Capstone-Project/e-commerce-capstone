@@ -7,7 +7,7 @@ export const UserProvider = ({ children }) => {
   const localCart = localStorage.getItem("localCart");
   const activeCart = localCart ? JSON.parse(localCart) : initialState.cart;
 
-  console.log(`activeCart: `, activeCart);
+  // console.log(`activeCart: `, activeCart);
 
   const localLoggedIn = localStorage.getItem("isLoggedIn");
   const activeLogin = JSON.parse(localLoggedIn)

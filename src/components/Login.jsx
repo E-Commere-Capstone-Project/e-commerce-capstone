@@ -24,7 +24,7 @@ export default function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     const user = await fetchLogin(username, password);
-    console.log(`login user`, user);
+    // console.log(`login user`, user);
     // onSetIsLoggedIn(true);
     setUsername("");
     setPassword("");

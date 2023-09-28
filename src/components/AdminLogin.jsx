@@ -24,7 +24,7 @@ export default function AdminLogin() {
   async function handleSubmit(e) {
     e.preventDefault();
     const user = await fetchAdminLogin(username, password);
-    console.log(`Admin login user`, user);
+    // console.log(`Admin login user`, user);
     // onSetIsLoggedIn(true);
     setUsername("");
     setPassword("");
@@ -34,7 +34,7 @@ export default function AdminLogin() {
     setTimeout(() => {
       navigate("/users/admin/account");
     }, 2000);
-    console.log(user);
+    // console.log(user);
   }
   return (
     <section id="admin-login-page">

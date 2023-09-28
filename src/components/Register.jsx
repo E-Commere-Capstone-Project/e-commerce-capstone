@@ -39,7 +39,7 @@ export default function Register() {
         lastName,
         telephone
       );
-      console.log(`JSX: New Registered User`, user);
+      // console.log(`JSX: New Registered User`, user);
       // onSetIsLoggedIn(true);
       setUsername("");
       setPassword("");

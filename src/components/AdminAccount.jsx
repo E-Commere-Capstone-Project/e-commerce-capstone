@@ -46,7 +46,7 @@ export default function AdminAccount() {
     async function ProductsFetch() {
       try {
         const data = await fetchProducts();
-        console.log(data);
+        // console.log(data);
 
         return setProducts(data);
       } catch (error) {
@@ -62,7 +62,7 @@ export default function AdminAccount() {
       try {
         if (!isLoggedIn) navigate("/");
         const data = await fetchAdminUser(JSON.parse(localToken));
-        console.log(data);
+        // console.log(data);
 
         return setUser(data);
       } catch (error) {
