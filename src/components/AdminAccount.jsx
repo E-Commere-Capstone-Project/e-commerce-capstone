@@ -111,18 +111,20 @@ export default function AdminAccount() {
           <CardBody>
             <Image src={product.product_image} alt={product.name} />
             <Stack>
-              <Heading size="md">{product.name}</Heading>
-              <Text color="blue.600" fontSize="2xl">
+              <Heading size="md" color="#40212B">
+                {product.name}
+              </Heading>
+              <Text color="#886670" fontSize="2xl">
                 ${product.price}
               </Text>
             </Stack>
           </CardBody>
-          <Divider />
           <CardFooter>
             <ButtonGroup>
               <Button
                 variant="solid"
-                colorScheme="blue"
+                borderRadius="0"
+                color="#B90E41"
                 onClick={() =>
                   activeEdit ? setActiveEdit(null) : setActiveEdit(product)
                 }
@@ -131,7 +133,8 @@ export default function AdminAccount() {
               </Button>
               <Button
                 variant="ghost"
-                colorScheme="blue"
+                color="#EC507F"
+                borderRadius="0"
                 onClick={() =>
                   handleDeleteProduct(JSON.parse(localToken), product.id)
                 }
