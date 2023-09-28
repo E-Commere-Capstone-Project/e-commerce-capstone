@@ -1,13 +1,6 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  Heading,
-  Text,
-  Button,
-} from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { FormControl, FormLabel, Input, Heading } from "@chakra-ui/react";
 import useShopUser from "./context/UserContext.jsx";
 import { fetchAdminLogin } from "../API/index.js";
 // import { fetchAdminLogin } from "../API";
@@ -19,6 +12,7 @@ export default function AdminLogin() {
   const { changeIsLoggedIn } = useShopUser();
 
   const navigate = useNavigate();
+
   async function handleSubmit(e) {
     e.preventDefault();
     const user = await fetchAdminLogin(username, password);
@@ -32,6 +26,7 @@ export default function AdminLogin() {
     setTimeout(() => {
       navigate("/users/admin/account");
     }, 2000);
+    console.log(user);
   }
   return (
     <form method="POST" onSubmit={handleSubmit} id="login-form">
@@ -53,7 +48,7 @@ export default function AdminLogin() {
         />
       </FormControl>
 
-      <button>Log in</button>
+      <button onClick={handleSubmit}>Log in</button>
     </form>
   );
 }
