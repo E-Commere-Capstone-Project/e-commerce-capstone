@@ -137,7 +137,7 @@ export default function Products() {
     setCategory(category);
     const filteredCategory = filter(
       products,
-      (product) => product.category === category
+      (product) => product.category_id === category
     );
     return setFilteredProducts(filteredCategory);
   }
@@ -177,19 +177,10 @@ export default function Products() {
             variant="solid"
             colorScheme="blue"
             onClick={() => {
-              handleSortProducts("title");
+              handleSortProducts("name");
             }}
           >
             Name
-          </Button>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              handleSortProducts("price");
-            }}
-          >
-            Price
           </Button>
           <Button
             variant="solid"
@@ -210,37 +201,46 @@ export default function Products() {
             variant="solid"
             colorScheme="blue"
             onClick={() => {
-              handleFilterCategory("electronics");
+              handleFilterCategory(1);
             }}
           >
-            Electronics
+            Lips
           </Button>
           <Button
             variant="solid"
             colorScheme="blue"
             onClick={() => {
-              handleFilterCategory("jewelery");
+              handleFilterCategory(2);
             }}
           >
-            Jewelry
+            Face
           </Button>
           <Button
             variant="solid"
             colorScheme="blue"
             onClick={() => {
-              handleFilterCategory("men's clothing");
+              handleFilterCategory(3);
             }}
           >
-            Men&apos;s Clothing
+            Eyes
           </Button>
           <Button
             variant="solid"
             colorScheme="blue"
             onClick={() => {
-              handleFilterCategory("women's clothing");
+              handleFilterCategory(5);
             }}
           >
-            Women&apos;s Clothing
+            Highlighters
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => {
+              handleFilterCategory(4);
+            }}
+          >
+            Accessories
           </Button>
           <Button
             variant="solid"
