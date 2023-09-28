@@ -43,7 +43,9 @@ export default function Cart() {
   useEffect(() => {
     async function CartFetch() {
       try {
+        if (!isLoggedIn) navigate("/users/login");
         const data = await fetchCart(JSON.parse(userToken));
+
         console.log(data);
 
         return setUserCart(data);
@@ -143,56 +145,62 @@ export default function Cart() {
 
   return (
     <div id="cart">
-      {!isLoggedIn && (
-        <>
-          <h2>You are not logged in.</h2>
-        </>
-      )}
-      {isLoggedIn && handleCartMap(cart)}
       {isLoggedIn && cart.length < 1 && (
-        <>
-          <Heading color="#dad3ae">There are no items in your cart</Heading>
+        <div>
+          <Heading color="#532C38">There are no items in your cart</Heading>
           <Button
             onClick={() => navigate("/products")}
             variant="ghost"
-            color="#dad3ae"
+            color="#886670"
           >
             Start shopping now
           </Button>
-        </>
+        </div>
       )}
-      {isLoggedIn && cart.length > 0 && (
-        <Card>
-          <Heading>Cart Summary</Heading>
-          <Stack>
-            <Text>
-              Subtotal -{" "}
-              <NumericFormat
-                value={cartSubTotal}
-                prefix={"$"}
-                decimalScale={2}
-                thousandSeparator={true}
-                displayType={"text"}
-              />
-            </Text>
-            <Text>Shipping and Handling - $0.00</Text>
-            <Text>Taxes - N/A</Text>
-            <Text>
-              TOTAL -{" "}
-              <NumericFormat
-                value={cartSubTotal}
-                prefix={"$"}
-                decimalScale={2}
-                thousandSeparator={true}
-                displayType={"text"}
-              />
-            </Text>
-          </Stack>
-          <CardFooter>
-            <Button onClick={() => navigate("/cart/checkout")}>Checkout</Button>
-          </CardFooter>
-        </Card>
-      )}
+      <div id="cart-contents">
+        <div id="cart-list">{isLoggedIn && handleCartMap(cart)}</div>
+        <div>
+          {isLoggedIn && cart.length > 0 && (
+            <Card id="cart-summary">
+              <Heading fontSize={"3.5em"} marginBottom=".5em">
+                Cart Summary
+              </Heading>
+              <Stack>
+                <Text fontSize={"1.3em"}>
+                  Subtotal -{" "}
+                  <NumericFormat
+                    value={cartSubTotal}
+                    prefix={"$"}
+                    decimalScale={2}
+                    thousandSeparator={true}
+                    displayType={"text"}
+                  />
+                </Text>
+                <Text fontSize={"1.3em"}>Shipping and Handling - $0.00</Text>
+                <Text fontSize={"1.3em"}>Taxes - N/A</Text>
+                <Text fontSize={"2em"}>
+                  Total -{" "}
+                  <NumericFormat
+                    value={cartSubTotal}
+                    prefix={"$"}
+                    decimalScale={2}
+                    thousandSeparator={true}
+                    displayType={"text"}
+                  />
+                </Text>
+              </Stack>
+              <CardFooter display="flex" justifyContent="center">
+                <Button
+                  onClick={() => navigate("/cart/checkout")}
+                  fontSize={"1.3em"}
+                >
+                  Checkout
+                </Button>
+              </CardFooter>
+            </Card>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

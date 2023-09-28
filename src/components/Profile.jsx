@@ -3,6 +3,7 @@ Needs imports to be able to work: useEffect and useNavigate at minimum
 */
 import { fetchAccount } from "../API/index.js";
 import { useState, useEffect } from "react";
+import { Heading, Text } from "@chakra-ui/react";
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -25,18 +26,20 @@ export default function Profile() {
   }, [localToken]);
 
   return (
-    <>
+    <section id="profile-page">
       {user && (
         <>
-          <h1>{user.userAccount.username}</h1>
+          <Heading color="#532C38" fontSize={"3.6em"}>
+            {user.userAccount.username}
+          </Heading>
           <div>
-            <h3>
+            <Text color="#886670" fontSize={"1.3em"}>
               {user.userAccount.first_name} {user.userAccount.last_name}
-            </h3>
+            </Text>
           </div>
         </>
       )}
       {err && <h2>{err}</h2>}
-    </>
+    </section>
   );
 }

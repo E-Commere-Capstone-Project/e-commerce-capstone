@@ -172,8 +172,9 @@ export default function Products() {
           <h3>Sort by: </h3>
           <ButtonGroup>
             <Button
-              variant="solid"
-              colorScheme="blue"
+              variant="ghost"
+              color="#EC507F"
+              borderRadius={0}
               onClick={() => {
                 handleSortProducts(sorter, order === "asc" ? "desc" : "asc");
               }}
@@ -181,8 +182,9 @@ export default function Products() {
               {order === "asc" ? "Desc" : "Asc"}
             </Button>
             <Button
-              variant="solid"
-              colorScheme="blue"
+              variant="ghost"
+              color="#EC507F"
+              borderRadius={0}
               onClick={() => {
                 handleSortProducts("name");
               }}
@@ -191,7 +193,8 @@ export default function Products() {
             </Button>
             <Button
               variant="solid"
-              colorScheme="blue"
+              color="#EC507F"
+              borderRadius={0}
               onClick={() => {
                 handleSortProducts("id", "asc");
               }}
@@ -205,8 +208,9 @@ export default function Products() {
           <h3>Filter by: </h3>
           <ButtonGroup>
             <Button
-              variant="solid"
-              colorScheme="blue"
+              variant="ghost"
+              color="#EC507F"
+              borderRadius={0}
               onClick={() => {
                 handleFilterCategory(1);
               }}
@@ -214,8 +218,9 @@ export default function Products() {
               Lips
             </Button>
             <Button
-              variant="solid"
-              colorScheme="blue"
+              variant="ghost"
+              color="#EC507F"
+              borderRadius={0}
               onClick={() => {
                 handleFilterCategory(2);
               }}
@@ -223,8 +228,9 @@ export default function Products() {
               Face
             </Button>
             <Button
-              variant="solid"
-              colorScheme="blue"
+              variant="ghost"
+              color="#EC507F"
+              borderRadius={0}
               onClick={() => {
                 handleFilterCategory(3);
               }}
@@ -232,8 +238,9 @@ export default function Products() {
               Eyes
             </Button>
             <Button
-              variant="solid"
-              colorScheme="blue"
+              variant="ghost"
+              color="#EC507F"
+              borderRadius={0}
               onClick={() => {
                 handleFilterCategory(5);
               }}
@@ -241,8 +248,9 @@ export default function Products() {
               Highlighters
             </Button>
             <Button
-              variant="solid"
-              colorScheme="blue"
+              variant="ghost"
+              color="#EC507F"
+              borderRadius={0}
               onClick={() => {
                 handleFilterCategory(4);
               }}
@@ -251,7 +259,8 @@ export default function Products() {
             </Button>
             <Button
               variant="solid"
-              colorScheme="blue"
+              color="#EC507F"
+              borderRadius={0}
               onClick={() => {
                 setFilteredProducts(products);
               }}
