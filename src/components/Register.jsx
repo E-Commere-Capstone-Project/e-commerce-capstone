@@ -63,62 +63,64 @@ export default function Register() {
   }
 
   return (
-    <form method="POST" onSubmit={handleSubmit} id="register-form">
-      <FormControl isRequired>
-        <FormLabel>First Name</FormLabel>
-        <Input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-      </FormControl>
-      <FormControl isRequired>
-        <FormLabel>Last Name</FormLabel>
-        <Input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-      </FormControl>
-      <FormControl isRequired>
-        <FormLabel>Telephone</FormLabel>
-        <Input
-          type="tel"
-          value={telephone}
-          pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
-          maxLength={10}
-          onChange={(e) => setTelephone(e.target.value)}
-        />
-      </FormControl>
-      <FormControl isRequired>
-        <FormLabel>Username</FormLabel>
-        <Input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </FormControl>
-      <FormControl isRequired>
-        <FormLabel>Password</FormLabel>
-        <Input
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </FormControl>
-      <FormControl isRequired>
-        <FormLabel>Confirm Password</FormLabel>
-        <Input
-          type="text"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-      </FormControl>
+    <section id="register-page">
+      <form method="POST" onSubmit={handleSubmit} id="register-form">
+        <FormControl isRequired>
+          <FormLabel>First Name</FormLabel>
+          <Input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel>Last Name</FormLabel>
+          <Input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel>Telephone</FormLabel>
+          <Input
+            type="tel"
+            value={telephone}
+            pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+            maxLength={10}
+            onChange={(e) => setTelephone(e.target.value)}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel>Username</FormLabel>
+          <Input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel>Password</FormLabel>
+          <Input
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel>Confirm Password</FormLabel>
+          <Input
+            type="text"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </FormControl>
 
-      <button onClick={() => (errorMessage ? handleErrorMessage() : "")}>
-        Register Now
-      </button>
-    </form>
+        <button onClick={() => (errorMessage ? handleErrorMessage() : "")}>
+          Register Now
+        </button>
+      </form>
+    </section>
   );
 }
 

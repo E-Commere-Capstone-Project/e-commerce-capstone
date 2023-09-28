@@ -68,7 +68,12 @@ export default function Products() {
       //   {/* <img src={product.image} alt={product.title} /> */}
       // </div>
       <div key={product.id} className="product-cont">
-        <Card className="product">
+        <Card
+          className="product"
+          justifyContent="space-between"
+          size="md"
+          borderRadius={0}
+        >
           <CardBody>
             <Image
               src={product.product_image}
@@ -76,21 +81,22 @@ export default function Products() {
               onClick={() => navigate(`/products/${product.id}`)}
             />
             <Stack>
-              <Heading size="md">{product.name}</Heading>
-              <Text color="blue.600" fontSize="2xl">
+              <Heading size="md" color="#40212B">
+                {product.name}
+              </Heading>
+              <Text color="#886670" fontSize="2xl">
                 ${product.price}
               </Text>
             </Stack>
           </CardBody>
-          <Divider />
           <CardFooter>
             <ButtonGroup>
-              <Button variant="solid" colorScheme="blue">
+              <Button variant="solid" color="#B90E41">
                 <Link to={`/products/${product.id}`}>View Product</Link>
               </Button>
               <Button
                 variant="ghost"
-                colorScheme="blue"
+                color="#EC507F"
                 onClick={() => {
                   // console.log(cart);
                   // addToCart(product);
@@ -160,102 +166,104 @@ export default function Products() {
   console.log(filteredProducts);
 
   return (
-    <>
-      <div id="product-sorter">
-        <h3>Sort by: </h3>
-        <ButtonGroup>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              handleSortProducts(sorter, order === "asc" ? "desc" : "asc");
-            }}
-          >
-            {order === "asc" ? "Desc" : "Asc"}
-          </Button>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              handleSortProducts("name");
-            }}
-          >
-            Name
-          </Button>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              handleSortProducts("id", "asc");
-            }}
-          >
-            Clear sort
-          </Button>
-        </ButtonGroup>
-      </div>
+    <section id="products-page">
+      <div id="product-sort-filter-cont">
+        <div id="product-sorter">
+          <h3>Sort by: </h3>
+          <ButtonGroup>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => {
+                handleSortProducts(sorter, order === "asc" ? "desc" : "asc");
+              }}
+            >
+              {order === "asc" ? "Desc" : "Asc"}
+            </Button>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => {
+                handleSortProducts("name");
+              }}
+            >
+              Name
+            </Button>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => {
+                handleSortProducts("id", "asc");
+              }}
+            >
+              Clear sort
+            </Button>
+          </ButtonGroup>
+        </div>
 
-      <div id="product-filter">
-        <h3>Filter by: </h3>
-        <ButtonGroup>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              handleFilterCategory(1);
-            }}
-          >
-            Lips
-          </Button>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              handleFilterCategory(2);
-            }}
-          >
-            Face
-          </Button>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              handleFilterCategory(3);
-            }}
-          >
-            Eyes
-          </Button>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              handleFilterCategory(5);
-            }}
-          >
-            Highlighters
-          </Button>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              handleFilterCategory(4);
-            }}
-          >
-            Accessories
-          </Button>
-          <Button
-            variant="solid"
-            colorScheme="blue"
-            onClick={() => {
-              setFilteredProducts(products);
-            }}
-          >
-            Clear Category
-          </Button>
-        </ButtonGroup>
+        <div id="product-filter">
+          <h3>Filter by: </h3>
+          <ButtonGroup>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => {
+                handleFilterCategory(1);
+              }}
+            >
+              Lips
+            </Button>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => {
+                handleFilterCategory(2);
+              }}
+            >
+              Face
+            </Button>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => {
+                handleFilterCategory(3);
+              }}
+            >
+              Eyes
+            </Button>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => {
+                handleFilterCategory(5);
+              }}
+            >
+              Highlighters
+            </Button>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => {
+                handleFilterCategory(4);
+              }}
+            >
+              Accessories
+            </Button>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => {
+                setFilteredProducts(products);
+              }}
+            >
+              Clear Category
+            </Button>
+          </ButtonGroup>
+        </div>
       </div>
       <div id="products">{products && handleMapping(filteredProducts)}</div>
 
       {err && <h3>{err}</h3>}
-    </>
+    </section>
   );
 }

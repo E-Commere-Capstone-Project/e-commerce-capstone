@@ -36,28 +36,30 @@ export default function Login() {
   }
 
   return (
-    <form method="POST" onSubmit={handleSubmit} id="login-form">
-      <Heading>Sign In</Heading>
-      <FormControl isRequired>
-        <FormLabel>Username</FormLabel>
-        <Input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />{" "}
-      </FormControl>
-      <FormControl>
-        <FormLabel>Password</FormLabel>
-        <Input
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </FormControl>
-      <Text>Don&apos;t have an account?</Text>
-      <Link to="/users/register">Sign up today</Link>
+    <section id="login-page">
+      <form method="POST" onSubmit={handleSubmit} id="login-form">
+        <Heading>Sign In</Heading>
+        <FormControl isRequired>
+          <FormLabel>Username</FormLabel>
+          <Input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />{" "}
+        </FormControl>
+        <FormControl>
+          <FormLabel>Password</FormLabel>
+          <Input
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FormControl>
+        <Text>Don&apos;t have an account?</Text>
+        <Link to="/users/register">Sign up today</Link>
 
-      <button>Log in</button>
-    </form>
+        <button>Log in</button>
+      </form>
+    </section>
   );
 }

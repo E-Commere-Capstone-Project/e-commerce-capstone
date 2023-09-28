@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchOneProduct } from "../API/index.js";
-import { Button, Image, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Image,
+  useToast,
+  ButtonGroup,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import useShopUser from "./context/UserContext.jsx";
 
 export default function ViewProduct() {
@@ -34,14 +41,7 @@ export default function ViewProduct() {
   }, [cart]);
 
   return (
-    <>
-      <p>View Product</p>
-      <Button variant="solid" colorScheme="blue">
-        <Link to="/products">
-          <p>Back</p>
-        </Link>
-      </Button>
-
+    <section id="view-product-page">
       {product && (
         <div id="product-main-div">
           <div id="product-image-div">
@@ -52,35 +52,45 @@ export default function ViewProduct() {
             />
           </div>
           <div id="product-content-div">
-            <h2>{product.name}</h2>
-            <p>{product.category}</p>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
-            <Button
-              variant="solid"
-              colorScheme="blue"
-              onClick={() => {
-                if (!isLoggedIn) {
-                  toast({
-                    title: `You are not logged in.`,
-                    description:
-                      "You must be logged in to add items to your cart.",
-                    status: "error",
-                    duration: 5000,
-                    isClosable: true,
-                    position: "bottom",
-                  });
-                } else {
-                  addToCart(product);
-                }
-              }}
-            >
-              Add to cart
-            </Button>
+            <Heading color="#532C38">{product.name}</Heading>
+            <Text fontSize="1.3em" color="#886670">
+              {product.description}
+            </Text>
+            <Text fontSize="1.3em" color="#886670">
+              ${product.price}
+            </Text>
+            <ButtonGroup>
+              <Button
+                variant="solid"
+                colorScheme="blue"
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    toast({
+                      title: `You are not logged in.`,
+                      description:
+                        "You must be logged in to add items to your cart.",
+                      status: "error",
+                      duration: 5000,
+                      isClosable: true,
+                      position: "bottom",
+                    });
+                  } else {
+                    addToCart(product);
+                  }
+                }}
+              >
+                Add to cart
+              </Button>
+              <Button variant="solid" colorScheme="blue">
+                <Link to="/products">
+                  <Text>Back</Text>
+                </Link>
+              </Button>
+            </ButtonGroup>
           </div>
         </div>
       )}
       {error && <p>{error}</p>}
-    </>
+    </section>
   );
 }

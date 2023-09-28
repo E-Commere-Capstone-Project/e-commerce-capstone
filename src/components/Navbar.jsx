@@ -29,24 +29,39 @@ export default function Navbar() {
 
   return (
     <header id="navbar">
-      <Heading color="#b8a43f" fontFamily="Playfair Display SC, serif">
+      <Heading color="#dd3064" fontFamily="Playfair Display SC, serif">
         Status Quo
       </Heading>
       <div>
         <nav>
           <ButtonGroup>
             <Link to="/">
-              <Button borderRadius="0" variant="ghost" colorScheme="yellow">
+              <Button
+                borderRadius="0"
+                variant="ghost"
+                color=" #F8769D"
+                fontSize={"1.3em"}
+              >
                 Home
               </Button>
             </Link>
             <Link to="/products">
-              <Button borderRadius="0" variant="ghost" colorScheme="yellow">
+              <Button
+                borderRadius="0"
+                variant="ghost"
+                color="#F8769D"
+                fontSize={"1.3em"}
+              >
                 Products
               </Button>
             </Link>
             <Link to={`/users/${isLoggedIn === true ? "Profile" : "login"}`}>
-              <Button borderRadius="0" variant="ghost" colorScheme="yellow">
+              <Button
+                borderRadius="0"
+                variant="ghost"
+                color="#F8769D"
+                fontSize={"1.3em"}
+              >
                 {isLoggedIn === true ? "Profile" : "Sign in"}
               </Button>
             </Link>
@@ -54,14 +69,20 @@ export default function Navbar() {
               <Button
                 borderRadius="0"
                 variant="ghost"
-                colorScheme="yellow"
+                color="#F8769D"
+                fontSize={"1.3em"}
                 onClick={handleLogOut}
               >
                 Log out
               </Button>
             )}
             <Link to="/cart">
-              <Button borderRadius="0" variant="solid" colorScheme="yellow">
+              <Button
+                borderRadius="0"
+                variant="solid"
+                color="#EC507F"
+                fontSize={"1.3em"}
+              >
                 Cart {isLoggedIn && cartQty > 0 && <Text>({cartQty})</Text>}
               </Button>
             </Link>
