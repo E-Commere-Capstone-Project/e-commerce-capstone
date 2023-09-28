@@ -29,7 +29,11 @@ export default function Navbar() {
 
   return (
     <header id="navbar">
-      <Heading color="#dd3064" fontFamily="Playfair Display SC, serif">
+      <Heading
+        color="#dd3064"
+        fontFamily="Playfair Display SC, serif"
+        fontWeight="700"
+      >
         Status Quo
       </Heading>
       <div>

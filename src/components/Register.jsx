@@ -8,6 +8,7 @@ import {
   Input,
   Button,
   useToast,
+  Heading,
 } from "@chakra-ui/react";
 // import useShopUser from "./context/UserContext.jsx";
 
@@ -65,25 +66,29 @@ export default function Register() {
   return (
     <section id="register-page">
       <form method="POST" onSubmit={handleSubmit} id="register-form">
+        <Heading color="#532C38">Register</Heading>
         <FormControl isRequired>
-          <FormLabel>First Name</FormLabel>
+          <FormLabel color="#734C58">First Name</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Last Name</FormLabel>
+          <FormLabel color="#734C58">Last Name</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Telephone</FormLabel>
+          <FormLabel color="#734C58">Telephone</FormLabel>
           <Input
+            borderRadius="0"
             type="tel"
             value={telephone}
             pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
@@ -92,33 +97,41 @@ export default function Register() {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Username</FormLabel>
+          <FormLabel color="#734C58">Username</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Password</FormLabel>
+          <FormLabel color="#734C58">Password</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Confirm Password</FormLabel>
+          <FormLabel color="#734C58">Confirm Password</FormLabel>
           <Input
             type="text"
+            borderRadius="0"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </FormControl>
 
-        <button onClick={() => (errorMessage ? handleErrorMessage() : "")}>
+        <Button
+          marginTop="1.2em"
+          color="#532C38"
+          fontSize="1.3em"
+          onClick={() => (errorMessage ? handleErrorMessage() : handleSubmit())}
+        >
           Register Now
-        </button>
+        </Button>
       </form>
     </section>
   );

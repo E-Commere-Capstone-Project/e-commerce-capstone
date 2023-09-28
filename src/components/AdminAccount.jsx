@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useShopUser from "./context/UserContext.jsx";
 import {
   FormControl,
   FormLabel,
@@ -19,7 +20,6 @@ import {
 import {
   fetchAdminUser,
   fetchAddNewProduct,
-  fetchPatchProduct,
   fetchDeleteProduct,
   fetchProducts,
 } from "../API/index.js";
@@ -39,6 +39,8 @@ export default function AdminAccount() {
   const [activeEdit, setActiveEdit] = useState(null);
 
   const localToken = localStorage.getItem("userToken");
+  const { isLoggedIn } = useShopUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function ProductsFetch() {
@@ -58,6 +60,7 @@ export default function AdminAccount() {
   useEffect(() => {
     async function AdminUserFetch() {
       try {
+        if (!isLoggedIn) navigate("/");
         const data = await fetchAdminUser(JSON.parse(localToken));
         console.log(data);
 
@@ -99,7 +102,12 @@ export default function AdminAccount() {
   function handleProductsMap(products) {
     return products.map((product) => (
       <div key={product.id} className="product-cont">
-        <Card className="product">
+        <Card
+          className="product"
+          justifyContent="space-between"
+          size="md"
+          borderRadius={0}
+        >
           <CardBody>
             <Image src={product.product_image} alt={product.name} />
             <Stack>
@@ -140,31 +148,35 @@ export default function AdminAccount() {
   return (
     <>
       {user && (
-        <>
-          <Heading>Admin Account</Heading>
-          <div>
+        <section id="admin-page">
+          <div id="create-product-form">
             <form method="POST" onSubmit={handleSubmit} id="login-form">
-              <Heading>Create new product</Heading>
+              <Heading color="#532C38">Create new product</Heading>
               <FormControl isRequired>
-                <FormLabel>Product Name</FormLabel>
+                <FormLabel color="#734C58">Product Name</FormLabel>
                 <Input
+                  borderRadius="0"
                   type="text"
                   value={productName}
                   onChange={(e) => setProductName(e.target.value)}
                 />{" "}
               </FormControl>
               <FormControl isRequired>
-                <FormLabel>Description</FormLabel>
+                <FormLabel color="#734C58">Description</FormLabel>
                 <Input
+                  borderRadius="0"
                   type="text"
                   value={productDescription}
                   onChange={(e) => setProductDescription(e.target.value)}
                 />
               </FormControl>
               <FormControl isRequired>
-                <FormLabel>Category</FormLabel>
+                <FormLabel color="#734C58">Category</FormLabel>
                 {/* <Input/> radio menu to select from the different categories */}
-                <Select onChange={(e) => setProductCategory(e.target.value)}>
+                <Select
+                  borderRadius="0"
+                  onChange={(e) => setProductCategory(e.target.value)}
+                >
                   <option value={0}>Select Category</option>
                   <option value={1}>Lips</option>
                   <option value={2}>Face</option>
@@ -174,44 +186,49 @@ export default function AdminAccount() {
                 </Select>
               </FormControl>
               <FormControl isRequired>
-                <FormLabel>Price</FormLabel>
+                <FormLabel color="#734C58">Price</FormLabel>
                 <Input
+                  borderRadius="0"
                   type="text"
                   value={productPrice}
                   onChange={(e) => setProductPrice(e.target.value)}
                 />
               </FormControl>
               <FormControl isRequired>
-                <FormLabel>Product Image</FormLabel>
+                <FormLabel color="#734C58">Product Image</FormLabel>
                 <Input
+                  borderRadius="0"
                   type="url"
                   value={productImage}
                   onChange={(e) => setProductImage(e.target.value)}
                 />
               </FormControl>
               <FormControl isRequired>
-                <FormLabel>Quantity in Stock</FormLabel>
+                <FormLabel color="#734C58">Quantity in Stock</FormLabel>
                 <Input
+                  borderRadius="0"
                   type="number"
                   value={productQty}
                   onChange={(e) => setProductQty(e.target.value)}
                 />
               </FormControl>
-              <button>Add</button>
-            </form>
-            <form>
-              <h2>Update a product</h2>
-            </form>
-            <form>
-              <h2>Delete a product</h2>
+              <Button
+                color="#532C38"
+                fontSize={"1.2em"}
+                borderRadius="0"
+                marginTop="1.2em"
+                onClick={handleSubmit}
+              >
+                Add
+              </Button>
             </form>
           </div>
-        </>
+        </section>
       )}
       {activeEdit && (
         <UpdateProduct product={activeEdit} onSetActiveEdit={setActiveEdit} />
       )}
-      <div>{products && handleProductsMap(products)}</div>
+      <div id="products">{products && handleProductsMap(products)}</div>
     </>
   );
 }

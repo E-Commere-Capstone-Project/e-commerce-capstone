@@ -61,8 +61,9 @@ export default function ViewProduct() {
             </Text>
             <ButtonGroup>
               <Button
+                borderRadius="0"
                 variant="solid"
-                colorScheme="blue"
+                color="#532C38"
                 onClick={() => {
                   if (!isLoggedIn) {
                     toast({
@@ -81,7 +82,7 @@ export default function ViewProduct() {
               >
                 Add to cart
               </Button>
-              <Button variant="solid" colorScheme="blue">
+              <Button variant="ghost" color="#532C38" borderRadius="0">
                 <Link to="/products">
                   <Text>Back</Text>
                 </Link>

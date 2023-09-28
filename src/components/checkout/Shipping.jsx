@@ -25,70 +25,82 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
 
   return (
     <div className="checkout-tabs">
-      <Heading>Shipping Information</Heading>
+      <Heading color="#532C38">Shipping Information</Heading>
       <form>
-        <FormControl isInvalid={checkIfError(firstName)} isRequired>
-          <FormLabel>First Name</FormLabel>
+        <FormControl isRequired>
+          <FormLabel color="#734C58">First Name</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             // onBlur={() => {}}
           />
         </FormControl>
-        <FormControl isInvalid={checkIfError(lastName) && focus} isRequired>
-          <FormLabel>Last Name</FormLabel>
+        <FormControl isRequired>
+          <FormLabel color="#734C58">Last Name</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Address</FormLabel>
+          <FormLabel color="#734C58">Address</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>City</FormLabel>
+          <FormLabel color="#734C58">City</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>State</FormLabel>
+          <FormLabel color="#734C58">State</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={state}
             onChange={(e) => setState(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>ZIP Code </FormLabel>
+          <FormLabel color="#734C58">ZIP Code </FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={zip}
             onChange={(e) => setZip(e.target.value)}
           />
         </FormControl>
         <div>
-          <Heading>Contact Information</Heading>
+          <Heading marginTop="1em" color="#532C38">
+            Contact Information
+          </Heading>
           <FormControl isRequired>
-            <FormLabel>Email Address</FormLabel>
+            <FormLabel color="#734C58">Email Address</FormLabel>
             <Input
+              borderRadius="0"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </FormControl>
           <FormControl>
-            <FormLabel optionalIndicator>Phone Number</FormLabel>
+            <FormLabel optionalIndicator color="#734C58">
+              Phone Number
+            </FormLabel>
             <Input
+              borderRadius="0"
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -102,6 +114,10 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
             /> */}
           </FormControl>
           <Button
+            borderRadius="0"
+            marginTop="1.2em"
+            color="#532C38"
+            fontSize="1.3em"
             onClick={() => {
               onSetActiveStep(activeStep + 1);
             }}

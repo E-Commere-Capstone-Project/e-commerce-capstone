@@ -6,6 +6,7 @@ import {
   Input,
   Select,
   Button,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import { fetchPatchProduct } from "../API/index.js";
 
@@ -37,12 +38,13 @@ export default function UpdateProduct({ product, onSetActiveEdit }) {
     return response;
   }
   return (
-    <div>
+    <div id="update-product-cont">
       <form method="POST" onSubmit={handleSubmit} id="login-form">
-        <Heading>Update Product</Heading>
+        <Heading color="#532C38">Update Product</Heading>
         <FormControl isRequired>
-          <FormLabel>Product Name</FormLabel>
+          <FormLabel color="#734C58">Product Name</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={productName}
             placeholder={productName}
@@ -50,17 +52,22 @@ export default function UpdateProduct({ product, onSetActiveEdit }) {
           />{" "}
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Description</FormLabel>
+          <FormLabel color="#734C58">Description</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={productDescription}
             onChange={(e) => setProductDescription(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Category</FormLabel>
+          <FormLabel color="#734C58">Category</FormLabel>
           {/* <Input/> radio menu to select from the different categories */}
-          <Select onChange={(e) => setProductCategory(e.target.value)}>
+          <Select
+            color="#734C58"
+            borderRadius="0"
+            onChange={(e) => setProductCategory(e.target.value)}
+          >
             <option value={0}>Select Category</option>
             <option value={1}>Lips</option>
             <option value={2}>Face</option>
@@ -70,30 +77,52 @@ export default function UpdateProduct({ product, onSetActiveEdit }) {
           </Select>
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Price</FormLabel>
+          <FormLabel color="#734C58">Price</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={productPrice}
             onChange={(e) => setProductPrice(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Product Image</FormLabel>
+          <FormLabel color="#734C58">Product Image</FormLabel>
           <Input
+            borderRadius="0"
             type="url"
             value={productImage}
             onChange={(e) => setProductImage(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Quantity in Stock</FormLabel>
+          <FormLabel color="#734C58">Quantity in Stock</FormLabel>
           <Input
+            borderRadius="0"
             type="number"
             value={productQty}
             onChange={(e) => setProductQty(e.target.value)}
           />
         </FormControl>
-        <button>Update</button>
+        <ButtonGroup>
+          <Button
+            color="#532C38"
+            fontSize={"1.2em"}
+            borderRadius="0"
+            marginTop="1.2em"
+            onClick={handleSubmit}
+          >
+            Update
+          </Button>
+          <Button
+            color="#532C38"
+            fontSize={"1.2em"}
+            borderRadius="0"
+            marginTop="1.2em"
+            onClick={() => onSetActiveEdit(null)}
+          >
+            Close
+          </Button>
+        </ButtonGroup>
       </form>
     </div>
   );

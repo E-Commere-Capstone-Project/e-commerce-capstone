@@ -23,6 +23,7 @@ import {
   fetchRemoveCartAll,
 } from "../API/index.js";
 import { update } from "lodash";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 /*
 Needs to import or receive data in relation to the cart itself and other data relevant
 to the user; cart should have two functionalities, one as a guest checkout and one as a user checkout 
@@ -106,13 +107,18 @@ export default function Cart() {
         />
         <Stack className="cart-product-content">
           <CardBody>
-            <Heading size="md">{product.name}</Heading>
-            <Text py="2">${product.price}</Text>
+            <Heading size="lg" color="#532C38" textAlign={"left"}>
+              {product.name}
+            </Heading>
+            <Text fontSize="1.3em" color="#734C58" textAlign="left">
+              ${product.price}
+            </Text>
           </CardBody>
-          <CardFooter>
+          <CardFooter gap="1.5em" alignItems="center">
             <Button
               variant="solid"
-              colorScheme="blue"
+              color="#532C38"
+              fontSize={"1.2em"}
               onClick={() => {
                 handleRemoveFromCart(product);
               }}
@@ -120,20 +126,22 @@ export default function Cart() {
               Remove from cart
             </Button>
             {product.qty > 1 && (
-              <Button onClick={() => handleUpdateCartLess(product)}>-</Button>
+              <AiOutlineMinus
+                color="#532C38"
+                fontSize={"2em"}
+                onClick={() => handleUpdateCartLess(product)}
+              />
             )}
-            <h4>{product.qty}</h4>
-            <Button onClick={() => handleUpdateCartMore(product)}>+</Button>
+            <Text fontSize="1.3em" color="#734C58">
+              {product.qty}
+            </Text>
+            <AiOutlinePlus
+              color="#532C38"
+              fontSize={"2em"}
+              onClick={() => handleUpdateCartMore(product)}
+            />
           </CardFooter>
         </Stack>
-        <p>Product Total:</p>
-        <NumericFormat
-          value={product.price * product.qty}
-          prefix={"$"}
-          decimalScale={2}
-          thousandSeparator={true}
-          displayType={"text"}
-        />
       </Card>
     ));
   }
@@ -162,11 +170,11 @@ export default function Cart() {
         <div>
           {isLoggedIn && cart.length > 0 && (
             <Card id="cart-summary">
-              <Heading fontSize={"3.5em"} marginBottom=".5em">
+              <Heading fontSize={"3.5em"} marginBottom=".5em" color="#532C38">
                 Cart Summary
               </Heading>
               <Stack>
-                <Text fontSize={"1.3em"}>
+                <Text fontSize={"1.3em"} color="#886670">
                   Subtotal -{" "}
                   <NumericFormat
                     value={cartSubTotal}
@@ -176,9 +184,13 @@ export default function Cart() {
                     displayType={"text"}
                   />
                 </Text>
-                <Text fontSize={"1.3em"}>Shipping and Handling - $0.00</Text>
-                <Text fontSize={"1.3em"}>Taxes - N/A</Text>
-                <Text fontSize={"2em"}>
+                <Text fontSize={"1.3em"} color="#886670">
+                  Shipping and Handling - $0.00
+                </Text>
+                <Text fontSize={"1.3em"} color="#886670">
+                  Taxes - N/A
+                </Text>
+                <Text fontSize={"2em"} color="#734C58">
                   Total -{" "}
                   <NumericFormat
                     value={cartSubTotal}
@@ -193,6 +205,9 @@ export default function Cart() {
                 <Button
                   onClick={() => navigate("/cart/checkout")}
                   fontSize={"1.3em"}
+                  color="#734C58"
+                  variant="solid"
+                  borderRadius={0}
                 >
                   Checkout
                 </Button>

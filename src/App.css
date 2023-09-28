@@ -26,10 +26,11 @@ neutral colors:
   text-align: center;
   background-color: #e4d9dc;
   min-height: 100vh;
+  font-family: "Lato", sans-serif;
 }
 
 #navbar {
-  background-color: #f5c7fc;
+  background-color: #edc9d4;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -118,6 +119,7 @@ neutral colors:
 
 #products-page {
   background-color: #e4d9dc;
+  margin-bottom: 2em;
 }
 
 #products {
@@ -125,11 +127,16 @@ neutral colors:
   flex-flow: row wrap;
   margin-top: 1em;
   justify-content: center;
+  font-family: "Lato", sans-serif;
 }
 
 .product-cont {
   width: 18%;
   margin: 0.5em;
+}
+
+#update-product-cont {
+  margin: 1em 2em;
 }
 
 .product {
@@ -217,28 +224,86 @@ neutral colors:
 /* checkout.jsx (shipping, payment, confirmCheckout) */
 .checkout-tabs {
   width: 45%;
-  margin: 2em 4em;
+  margin: 2em auto;
   padding: 2em;
-  background-color: #ac9fa2;
+  background-color: #d9cacf;
+  min-height: 85vh;
+}
+
+#confirm-checkout-cont {
+  min-height: 85vh;
+}
+
+#confirm-checkout {
+  width: 45%;
+  margin: 2em auto;
+  padding: 2em;
+  background-color: #d9cacf;
+}
+
+#order-status-page {
+  min-height: 85vh;
+  padding: 2em;
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1em;
+}
+
+#confirm-checkout {
+  max-height: vh;
 }
 
 #register-form,
 #login-form {
   width: 60%;
   padding: 2em;
-  background-color: #ac9fa2;
+  background-color: #d9cacf;
 }
 
 #login-page,
 #register-page,
 #view-product-page,
-#profile-page {
+#profile-page,
+#admin-login-page {
   min-height: 85vh;
   background-color: #e4d9dc;
+  padding: 2em;
+}
+
+#create-product-form {
   padding: 2em;
 }
 
 footer {
   background-color: #ac9fa2;
   min-height: 10vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 2em 4em 2em;
+}
+
+footer h3 {
+  font-size: 2em;
+  color: #6a0624;
+  font-family: "Playfair Display SC", serif;
+  font-weight: 700;
+}
+
+footer h5 {
+  font-size: 1em;
+  color: #532c38;
+}
+
+.icon {
+  font-size: 2em;
+  color: #ec507f;
+}
+
+.icon:hover {
+  transition: all 0.3s;
+  cursor: pointer;
+  color: #6a0624;
 }

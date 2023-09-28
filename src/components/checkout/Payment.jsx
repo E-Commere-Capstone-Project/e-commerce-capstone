@@ -25,86 +25,98 @@ export default function Payment({ activeStep, onSetActiveStep }) {
 
   return (
     <div className="checkout-tabs">
-      <Heading>Payment Information</Heading>
+      <Heading color="#532C38">Payment Information</Heading>
       <form>
         <div>
           <FormControl isRequired>
-            <FormLabel>Credit or Debit Card Number</FormLabel>
+            <FormLabel color="#734C58">Credit or Debit Card Number</FormLabel>
             <Input
+              borderRadius="0"
               type="text"
               value={card}
               onChange={(e) => setCard(e.target.value)}
             />
           </FormControl>
           <FormControl isRequired>
-            <FormLabel>Exp. Date</FormLabel>
+            <FormLabel color="#734C58">Exp. Date</FormLabel>
             <Input
+              borderRadius="0"
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
           </FormControl>
           <FormControl>
-            <FormLabel>CVV</FormLabel>
+            <FormLabel color="#734C58">CVV</FormLabel>
             <Input
+              borderRadius="0"
               type="text"
               value={cvv}
               onChange={(e) => setCvv(e.target.value)}
             />
           </FormControl>
         </div>
-        <Heading>Billing Address</Heading>
-        <FormControl isInvalid={checkIfError(firstName)} isRequired>
-          <FormLabel>First Name</FormLabel>
+        <Heading color="#532C38">Billing Address</Heading>
+        <FormControl isRequired>
+          <FormLabel color="#734C58">First Name</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             // onBlur={() => {}}
           />
         </FormControl>
-        <FormControl isInvalid={checkIfError(lastName) && focus} isRequired>
-          <FormLabel>Last Name</FormLabel>
+        <FormControl isRequired>
+          <FormLabel color="#734C58">Last Name</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Address</FormLabel>
+          <FormLabel color="#734C58">Address</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>City</FormLabel>
+          <FormLabel color="#734C58">City</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>State</FormLabel>
+          <FormLabel color="#734C58">State</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={state}
             onChange={(e) => setState(e.target.value)}
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>ZIP Code </FormLabel>
+          <FormLabel color="#734C58">ZIP Code </FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={zip}
             onChange={(e) => setZip(e.target.value)}
           />
         </FormControl>
-        <ButtonGroup>
+        <ButtonGroup marginTop="1.2em" gap=".5em">
           <Button
+            borderRadius="0"
+            color="#532C38"
+            fontSize="1.3em"
             onClick={() => {
               onSetActiveStep(activeStep - 1);
             }}
@@ -112,6 +124,9 @@ export default function Payment({ activeStep, onSetActiveStep }) {
             Back
           </Button>
           <Button
+            borderRadius="0"
+            color="#532C38"
+            fontSize="1.3em"
             onClick={() => {
               onSetActiveStep(activeStep + 1);
             }}

@@ -8,6 +8,7 @@ import {
   Heading,
   Text,
   Button,
+  Stack,
 } from "@chakra-ui/react";
 import useShopUser from "./context/UserContext.jsx";
 
@@ -38,27 +39,42 @@ export default function Login() {
   return (
     <section id="login-page">
       <form method="POST" onSubmit={handleSubmit} id="login-form">
-        <Heading>Sign In</Heading>
+        <Heading color="#532C38">Sign In</Heading>
         <FormControl isRequired>
-          <FormLabel>Username</FormLabel>
+          <FormLabel color="#734C58">Username</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />{" "}
         </FormControl>
-        <FormControl>
-          <FormLabel>Password</FormLabel>
+        <FormControl isRequired>
+          <FormLabel color="#734C58">Password</FormLabel>
           <Input
+            borderRadius="0"
             type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormControl>
-        <Text>Don&apos;t have an account?</Text>
-        <Link to="/users/register">Sign up today</Link>
+        <Stack
+          flexFlow="row wrap"
+          alignItems="center"
+          padding="1em 0"
+          color="#532C38"
+        >
+          <Text fontSize="1.2em">Don&apos;t have an account?</Text>
+          <Link to="/users/register">
+            <Text fontSize="1.2em" backgroundColor="#F0EAEC" padding=".25em">
+              Sign up today
+            </Text>
+          </Link>
+        </Stack>
 
-        <button>Log in</button>
+        <Button color="#532C38" fontSize={"1.2em"} onClick={handleSubmit}>
+          Log in
+        </Button>
       </form>
     </section>
   );

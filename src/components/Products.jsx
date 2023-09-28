@@ -91,12 +91,13 @@ export default function Products() {
           </CardBody>
           <CardFooter>
             <ButtonGroup>
-              <Button variant="solid" color="#B90E41">
+              <Button variant="solid" borderRadius="0" color="#B90E41">
                 <Link to={`/products/${product.id}`}>View Product</Link>
               </Button>
               <Button
                 variant="ghost"
                 color="#EC507F"
+                borderRadius="0"
                 onClick={() => {
                   // console.log(cart);
                   // addToCart(product);

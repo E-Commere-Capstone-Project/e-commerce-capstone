@@ -19,12 +19,22 @@ export default function ConfirmCheckout({ activeStep, onSetActiveStep }) {
     clearCart();
   }
   return (
-    <div className="checkout-tabs">
-      <Heading>Review and Place Order</Heading>
-      <ButtonGroup>
-        <Button onClick={() => onSetActiveStep(activeStep - 1)}>Back</Button>
-        <Button onClick={handleCheckOut}>Place order</Button>
-      </ButtonGroup>
-    </div>
+    <section id="confirm-checkout-cont">
+      <div id="confirm-checkout">
+        <Heading color="#532C38">Review and Place Order</Heading>
+        <ButtonGroup marginTop="3em" gap=".5em">
+          <Button
+            borderRadius="0"
+            color="#532C38"
+            onClick={() => onSetActiveStep(activeStep - 1)}
+          >
+            Back
+          </Button>
+          <Button borderRadius="0" color="#532C38" onClick={handleCheckOut}>
+            Place order
+          </Button>
+        </ButtonGroup>
+      </div>
+    </section>
   );
 }
