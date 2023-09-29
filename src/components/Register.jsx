@@ -128,6 +128,7 @@ export default function Register() {
           marginTop="1.2em"
           color="#532C38"
           fontSize="1.3em"
+          borderRadius="0"
           onClick={() => (errorMessage ? handleErrorMessage() : handleSubmit())}
         >
           Register Now
