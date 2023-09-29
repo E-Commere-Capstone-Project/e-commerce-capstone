@@ -72,7 +72,12 @@ export default function Login() {
           </Link>
         </Stack>
 
-        <Button color="#532C38" fontSize={"1.2em"} onClick={handleSubmit}>
+        <Button
+          color="#532C38"
+          fontSize={"1.2em"}
+          borderRadius="0"
+          onClick={handleSubmit}
+        >
           Log in
         </Button>
       </form>
