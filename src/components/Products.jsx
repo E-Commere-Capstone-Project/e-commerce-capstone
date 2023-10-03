@@ -15,6 +15,7 @@ import {
   ButtonGroup,
   useToast,
   Box,
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 import useShopUser from "./context/UserContext.jsx";
@@ -35,6 +36,8 @@ export default function Products() {
   const userToken = localStorage.getItem("userToken");
 
   const { addToCart, cart, isLoggedIn } = useShopUser();
+
+  const [isMobile] = useMediaQuery("(max-width: 400px)");
 
   useEffect(() => {
     async function ProductsFetch() {
@@ -71,33 +74,41 @@ export default function Products() {
         <Card
           className="product"
           justifyContent="space-between"
-          size="md"
+          size={isMobile ? "sm" : "md"}
           borderRadius={0}
         >
-          <CardBody>
+          <CardBody display={isMobile ? "flex" : "default"}>
             <Image
               src={product.product_image}
               alt={product.name}
               onClick={() => navigate(`/products/${product.id}`)}
+              width={isMobile ? "35%" : "100%"}
             />
             <Stack>
-              <Heading size="md" color="#40212B">
+              <Heading size={isMobile ? "sm" : "md"} color="#40212B">
                 {product.name}
               </Heading>
-              <Text color="#886670" fontSize="2xl">
+              <Text color="#886670" fontSize={isMobile ? "1.2em" : "1.5em"}>
                 ${product.price}
               </Text>
             </Stack>
           </CardBody>
           <CardFooter>
             <ButtonGroup>
-              <Button variant="solid" borderRadius="0" color="#B90E41">
+              <Button
+                variant="solid"
+                borderRadius="0"
+                color="#B90E41"
+                fontSize={isMobile ? ".7em" : "1em"}
+                // padding={isMobile ? ".25em" : "default"}
+              >
                 <Link to={`/products/${product.id}`}>View Product</Link>
               </Button>
               <Button
                 variant="ghost"
                 color="#EC507F"
                 borderRadius="0"
+                fontSize={isMobile ? ".7em" : "1em"}
                 onClick={() => {
                   // console.log(cart);
                   // addToCart(product);

@@ -55,11 +55,6 @@ neutral colors:
   padding: 0.25em 0.5em;
 }
 
-.nav-tab-text:hover {
-  background-color: white;
-  transition: all 0.4s;
-}
-
 .nav-tab-icon {
   display: none;
 }
@@ -337,6 +332,13 @@ footer h5 {
 
 /* MEDIA QUERIES */
 
+@media screen and (max-width: 1440px) and (min-width: 401px) {
+  .nav-tab-text:hover {
+    background-color: white;
+    transition: all 0.4s;
+  }
+}
+
 @media screen and (max-width: 400px) {
   /* Navbar */
   #navbar {
@@ -379,7 +381,7 @@ footer h5 {
 
   .nav-tab-text:hover {
     background-color: none;
-    color: #6a0624;
+
     transition: all 0.4s;
   }
 
@@ -443,6 +445,29 @@ footer h5 {
 
   #home-ul-content-cont p {
     font-size: 1em;
+  }
+
+  /* Products */
+  #products {
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 1em;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lato", sans-serif;
+  }
+
+  .product-cont {
+    width: 90%;
+    /* margin: 0.5em; */
+  }
+
+  .product {
+    flex-flow: row wrap;
+  }
+
+  .product-image {
+    object-fit: cover;
   }
 
   /* Footer */
