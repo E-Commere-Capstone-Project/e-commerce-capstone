@@ -307,3 +307,123 @@ footer h5 {
   cursor: pointer;
   color: #6a0624;
 }
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 375px) {
+  /* Navbar */
+  #navbar {
+    padding: 1em;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  #navbar-heading {
+    display: none;
+  }
+
+  #navbar nav {
+    font-size: 0.75em;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 3em;
+  }
+
+  .nav-tab {
+    display: flex;
+    flex-flow: column-reverse wrap;
+    align-items: center;
+  }
+
+  .nav-tab-text {
+    border-radius: 0;
+    color: #f8769d;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .nav-tab-icon {
+    font-size: 2.5em;
+    color: #dd3064;
+  }
+
+  /* Home page */
+  #home {
+    background: linear-gradient(0deg, #4e3b4782, #40333b82),
+      url("https://images.unsplash.com/photo-1630084775816-7abb7383ded5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80");
+    background-size: cover;
+    background-position: center center;
+    height: 90vh;
+    min-height: 500px;
+  }
+
+  #home-content-div {
+    padding-right: 1em;
+  }
+
+  #home-content-div h1 {
+    font-size: 3.5em;
+  }
+
+  #home-content-div h3 {
+    font-size: 1.5em;
+  }
+
+  #home-content-div button {
+    font-size: 1.25em;
+  }
+
+  #home-under-landing {
+    height: 90vh;
+    flex-flow: column-reverse;
+  }
+
+  #home-ul-img-cont {
+    background: linear-gradient(0deg, #836f7a82, #695f6582),
+      url("https://images.unsplash.com/photo-1500840216050-6ffa99d75160?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2097&q=80");
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+  }
+
+  #home-ul-content-cont {
+    width: 100%;
+    height: 100%;
+    padding: 0.5em 1.5em;
+    text-align: left;
+  }
+
+  #home-ul-content-cont h2 {
+    font-size: 1.7em;
+    margin-bottom: 0.5em;
+  }
+
+  #home-ul-content-cont p {
+    font-size: 1em;
+  }
+
+  /* Footer */
+
+  footer {
+    min-height: 10vh;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    gap: 0.75em;
+    align-items: center;
+    padding: 1em 1.5em 6em 1.5em;
+  }
+
+  footer h3 {
+    font-size: 2em;
+  }
+
+  footer h5 {
+    font-size: 1em;
+  }
+}

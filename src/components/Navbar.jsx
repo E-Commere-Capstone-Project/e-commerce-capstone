@@ -2,6 +2,13 @@ import { Link } from "react-router-dom";
 import { Button, ButtonGroup, Heading, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import useShopUser from "./context/UserContext.jsx";
+import {
+  AiFillTag,
+  AiOutlineHome,
+  AiOutlineUser,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
+import { RiLoginBoxLine } from "react-icons/ri";
 
 export default function Navbar() {
   const { isLoggedIn, changeIsLoggedIn, cart } = useShopUser();
@@ -33,64 +40,44 @@ export default function Navbar() {
         color="#dd3064"
         fontFamily="Playfair Display SC, serif"
         fontWeight="700"
+        id="navbar-heading"
       >
         Status Quo
       </Heading>
       <div>
         <nav>
-          <ButtonGroup>
-            <Link to="/">
-              <Button
-                borderRadius="0"
-                variant="ghost"
-                color=" #F8769D"
-                fontSize={"1.3em"}
-              >
-                Home
-              </Button>
-            </Link>
-            <Link to="/products">
-              <Button
-                borderRadius="0"
-                variant="ghost"
-                color="#F8769D"
-                fontSize={"1.3em"}
-              >
-                Products
-              </Button>
-            </Link>
-            <Link to={`/users/${isLoggedIn === true ? "Profile" : "login"}`}>
-              <Button
-                borderRadius="0"
-                variant="ghost"
-                color="#F8769D"
-                fontSize={"1.3em"}
-              >
-                {isLoggedIn === true ? "Profile" : "Sign in"}
-              </Button>
-            </Link>
-            {isLoggedIn === true && (
-              <Button
-                borderRadius="0"
-                variant="ghost"
-                color="#F8769D"
-                fontSize={"1.3em"}
-                onClick={handleLogOut}
-              >
-                Log out
-              </Button>
+          <Link to="/" className="nav-tab">
+            <button className="nav-tab-text">Home</button>
+            <AiOutlineHome className="nav-tab-icon" />
+          </Link>
+          <Link to="/products" className="nav-tab">
+            <button className="nav-tab-text">Shop</button>
+            <AiFillTag className="nav-tab-icon" />
+          </Link>
+          <Link
+            to={`/users/${isLoggedIn === true ? "Profile" : "login"}`}
+            className="nav-tab"
+          >
+            <button className="nav-tab-text">
+              {isLoggedIn === true ? "Profile" : "Sign in"}
+            </button>
+            {isLoggedIn == true ? (
+              <AiOutlineUser className="nav-tab-icon" />
+            ) : (
+              <RiLoginBoxLine className="nav-tab-icon" />
             )}
-            <Link to="/cart">
-              <Button
-                borderRadius="0"
-                variant="solid"
-                color="#EC507F"
-                fontSize={"1.3em"}
-              >
-                Cart {isLoggedIn && cartQty > 0 && <Text>({cartQty})</Text>}
-              </Button>
-            </Link>
-          </ButtonGroup>
+          </Link>
+          {isLoggedIn === true && (
+            <button className="nav-tab-text" onClick={handleLogOut}>
+              Log out
+            </button>
+          )}
+          <Link to="/cart" className="nav-tab">
+            <button className="nav-tab-text">
+              Cart {isLoggedIn && cartQty > 0 && <Text>({cartQty})</Text>}
+            </button>
+            <AiOutlineShoppingCart className="nav-tab-icon" />
+          </Link>
         </nav>
       </div>
     </header>
