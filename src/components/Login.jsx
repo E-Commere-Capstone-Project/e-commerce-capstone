@@ -7,7 +7,7 @@ import {
   Input,
   Heading,
   Text,
-  Button,
+  useToast,
   Stack,
 } from "@chakra-ui/react";
 import useShopUser from "./context/UserContext.jsx";
@@ -16,6 +16,8 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // const isEmpty = password === "";
+
+  const toast = useToast();
 
   const { changeIsLoggedIn } = useShopUser();
 
@@ -28,12 +30,32 @@ export default function Login() {
     // onSetIsLoggedIn(true);
     setUsername("");
     setPassword("");
-    localStorage.setItem("isLoggedIn", JSON.stringify(true));
-    localStorage.setItem("userToken", JSON.stringify(user.userToken));
-    changeIsLoggedIn(true);
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
+    if (user.user) {
+      localStorage.setItem("isLoggedIn", JSON.stringify(true));
+      localStorage.setItem("userToken", JSON.stringify(user.userToken));
+      changeIsLoggedIn(true);
+      toast({
+        title: "Successful login",
+        description:
+          "You have successfully been logged in, we are redirecting you to your profile now",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setTimeout(() => {
+        navigate("/users/profile");
+      }, 2000);
+    } else {
+      toast({
+        title: "Failed Login",
+        description: "Username or Password incorrect",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+    }
   }
 
   return (
@@ -72,14 +94,7 @@ export default function Login() {
           </Link>
         </Stack>
 
-        <Button
-          color="#532C38"
-          fontSize={"1.2em"}
-          borderRadius="0"
-          onClick={handleSubmit}
-        >
-          Log in
-        </Button>
+        <button color="#532C38">Log in</button>
       </form>
     </section>
   );
