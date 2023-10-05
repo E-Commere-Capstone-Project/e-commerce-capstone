@@ -208,6 +208,11 @@ neutral colors:
 }
 
 /* Cart.jsx */
+#cart-btn {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.25em;
+}
 
 #cart {
   width: 100%;
