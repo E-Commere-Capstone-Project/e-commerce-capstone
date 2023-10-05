@@ -98,6 +98,7 @@ export default function Cart() {
         key={product.id}
         direction={{ base: "column", sm: "row" }}
         className="cart-product"
+        borderRadius="0"
       >
         <Image
           objectFit="cover"
@@ -119,6 +120,7 @@ export default function Cart() {
               variant="solid"
               color="#532C38"
               fontSize={"1.2em"}
+              borderRadius="0"
               onClick={() => {
                 handleRemoveFromCart(product);
               }}
@@ -160,6 +162,7 @@ export default function Cart() {
             onClick={() => navigate("/products")}
             variant="ghost"
             color="#886670"
+            borderRadius="0"
           >
             Start shopping now
           </Button>
@@ -169,7 +172,7 @@ export default function Cart() {
         <div id="cart-list">{isLoggedIn && handleCartMap(cart)}</div>
         <div>
           {isLoggedIn && cart.length > 0 && (
-            <Card id="cart-summary">
+            <Card id="cart-summary" borderRadius="0">
               <Heading fontSize={"3.5em"} marginBottom=".5em" color="#532C38">
                 Cart Summary
               </Heading>
