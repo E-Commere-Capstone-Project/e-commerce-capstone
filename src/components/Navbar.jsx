@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, ButtonGroup, Heading, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import useShopUser from "./context/UserContext.jsx";
@@ -13,6 +13,8 @@ import { RiLoginBoxLine } from "react-icons/ri";
 export default function Navbar() {
   const { isLoggedIn, changeIsLoggedIn, cart } = useShopUser();
 
+  const navigate = useNavigate();
+
   // console.log("navbar", isLoggedIn);
 
   useEffect(() => {
@@ -23,6 +25,7 @@ export default function Navbar() {
   useEffect(() => {}, [cart]);
 
   function handleLogOut() {
+    navigate("/");
     localStorage.setItem("isLoggedIn", JSON.stringify(false));
     changeIsLoggedIn(false);
     localStorage.setItem("userToken", JSON.stringify(null));
@@ -74,7 +77,10 @@ export default function Navbar() {
           )}
           <Link to="/cart" className="nav-tab">
             <button className="nav-tab-text">
-              Cart {isLoggedIn && cartQty > 0 && <Text>({cartQty})</Text>}
+              <span id="cart-btn">
+                <Text>Cart</Text>{" "}
+                {isLoggedIn && cartQty > 0 && <Text>({cartQty})</Text>}
+              </span>
             </button>
             <AiOutlineShoppingCart className="nav-tab-icon" />
           </Link>
