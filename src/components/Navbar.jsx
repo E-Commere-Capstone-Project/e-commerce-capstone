@@ -55,7 +55,7 @@ export default function Navbar() {
             <AiFillTag className="nav-tab-icon" />
           </Link>
           <Link
-            to={`/users/${isLoggedIn === true ? "Profile" : "login"}`}
+            to={`/users/${isLoggedIn === true ? "profile" : "login"}`}
             className="nav-tab"
           >
             <button className="nav-tab-text">
