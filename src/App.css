@@ -165,6 +165,12 @@ neutral colors:
   height: 100%;
 }
 
+#products-loading {
+  min-height: 90vh;
+  font-size: 3em;
+  color: #886670;
+}
+
 /* View Product.jsx */
 #product-main-div {
   display: flex;

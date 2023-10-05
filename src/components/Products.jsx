@@ -28,6 +28,8 @@ export default function Products() {
   const [order, setOrder] = useState("asc");
   const [category, setCategory] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   // const [priceMin, setPriceMin] = useState(0);
   // const [priceMax, setPriceMax] = useState(10000);
   const toast = useToast();
@@ -40,13 +42,17 @@ export default function Products() {
   const [isMobile] = useMediaQuery("(max-width: 400px)");
 
   useEffect(() => {
+    setLoading(true);
     async function ProductsFetch() {
       try {
         const data = await fetchProducts();
         // console.log(data);
-
-        return setProducts(data), setFilteredProducts(data);
+        if (data) {
+          setLoading(false);
+          return setProducts(data), setFilteredProducts(data);
+        }
       } catch (error) {
+        setLoading(false);
         setErr(error);
         console.log(error);
       }
@@ -282,6 +288,11 @@ export default function Products() {
           </ButtonGroup>
         </div>
       </div>
+      {loading && (
+        <div id="products-loading">
+          <h1>Loading data...</h1>
+        </div>
+      )}
       <div id="products">{products && handleMapping(filteredProducts)}</div>
 
       {err && <h3>{err}</h3>}
