@@ -21,16 +21,22 @@ export default function ConfirmCheckout({ activeStep, onSetActiveStep }) {
   return (
     <section id="confirm-checkout-cont">
       <div id="confirm-checkout">
-        <Heading color="#532C38">Review and Place Order</Heading>
+        <Heading
+          color="brand.700"
+          fontFamily="fonts.body"
+          fontSize={{ base: "2em" }}
+        >
+          Review and Place Order
+        </Heading>
         <ButtonGroup marginTop="3em" gap=".5em">
           <Button
             borderRadius="0"
-            color="#532C38"
+            color="neutral.700"
             onClick={() => onSetActiveStep(activeStep - 1)}
           >
             Back
           </Button>
-          <Button borderRadius="0" color="#532C38" onClick={handleCheckOut}>
+          <Button borderRadius="0" color="neutral.700" onClick={handleCheckOut}>
             Place order
           </Button>
         </ButtonGroup>

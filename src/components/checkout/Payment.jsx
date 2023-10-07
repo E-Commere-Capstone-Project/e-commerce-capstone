@@ -21,11 +21,20 @@ export default function Payment({ activeStep, onSetActiveStep }) {
 
   return (
     <div className="checkout-tabs">
-      <Heading color="#532C38">Payment Information</Heading>
+      <Heading
+        color="brand.700"
+        fontFamily="fonts.body"
+        fontSize={{ base: "1.65em" }}
+        paddingBottom={{ base: ".5em" }}
+      >
+        Payment Information
+      </Heading>
       <form>
         <div>
           <FormControl isRequired>
-            <FormLabel color="#734C58">Credit or Debit Card Number</FormLabel>
+            <FormLabel color="neutral.600">
+              Credit or Debit Card Number
+            </FormLabel>
             <Input
               borderRadius="0"
               type="text"
@@ -34,7 +43,7 @@ export default function Payment({ activeStep, onSetActiveStep }) {
             />
           </FormControl>
           <FormControl isRequired>
-            <FormLabel color="#734C58">Exp. Date</FormLabel>
+            <FormLabel color="neutral.600">Exp. Date</FormLabel>
             <Input
               borderRadius="0"
               type="date"
@@ -43,7 +52,7 @@ export default function Payment({ activeStep, onSetActiveStep }) {
             />
           </FormControl>
           <FormControl>
-            <FormLabel color="#734C58">CVV</FormLabel>
+            <FormLabel color="neutral.600">CVV</FormLabel>
             <Input
               borderRadius="0"
               type="text"
@@ -52,9 +61,17 @@ export default function Payment({ activeStep, onSetActiveStep }) {
             />
           </FormControl>
         </div>
-        <Heading color="#532C38">Billing Address</Heading>
+        <Heading
+          marginTop={{ base: "1em" }}
+          color="brand.700"
+          fontFamily="fonts.body"
+          fontSize={{ base: "1.65em" }}
+          paddingBottom={{ base: ".5em" }}
+        >
+          Billing Address
+        </Heading>
         <FormControl isRequired>
-          <FormLabel color="#734C58">First Name</FormLabel>
+          <FormLabel color="neutral.600">First Name</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -64,7 +81,7 @@ export default function Payment({ activeStep, onSetActiveStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Last Name</FormLabel>
+          <FormLabel color="neutral.600">Last Name</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -73,7 +90,7 @@ export default function Payment({ activeStep, onSetActiveStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Address</FormLabel>
+          <FormLabel color="neutral.600">Address</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -82,7 +99,7 @@ export default function Payment({ activeStep, onSetActiveStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">City</FormLabel>
+          <FormLabel color="neutral.600">City</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -91,7 +108,7 @@ export default function Payment({ activeStep, onSetActiveStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">State</FormLabel>
+          <FormLabel color="neutral.600">State</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -100,7 +117,7 @@ export default function Payment({ activeStep, onSetActiveStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">ZIP Code </FormLabel>
+          <FormLabel color="neutral.600">ZIP Code </FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -111,7 +128,7 @@ export default function Payment({ activeStep, onSetActiveStep }) {
         <ButtonGroup marginTop="1.2em" gap=".5em">
           <Button
             borderRadius="0"
-            color="#532C38"
+            color="neutral.700"
             fontSize="1.3em"
             onClick={() => {
               onSetActiveStep(activeStep - 1);
@@ -121,7 +138,7 @@ export default function Payment({ activeStep, onSetActiveStep }) {
           </Button>
           <Button
             borderRadius="0"
-            color="#532C38"
+            color="neutral.700"
             fontSize="1.3em"
             onClick={() => {
               onSetActiveStep(activeStep + 1);

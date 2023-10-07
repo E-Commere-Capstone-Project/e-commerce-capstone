@@ -66,9 +66,15 @@ export default function Register() {
   return (
     <section id="register-page">
       <form method="POST" onSubmit={handleSubmit} id="register-form">
-        <Heading color="#532C38">Register</Heading>
+        <Heading
+          color="neutral.700"
+          fontFamily="fonts.body"
+          paddingBottom="1em"
+        >
+          Register
+        </Heading>
         <FormControl isRequired>
-          <FormLabel color="#734C58">First Name</FormLabel>
+          <FormLabel color="neutral.600">First Name</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -77,7 +83,7 @@ export default function Register() {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Last Name</FormLabel>
+          <FormLabel color="neutral.600">Last Name</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -86,7 +92,7 @@ export default function Register() {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Telephone</FormLabel>
+          <FormLabel color="neutral.600">Telephone</FormLabel>
           <Input
             borderRadius="0"
             type="tel"
@@ -97,7 +103,7 @@ export default function Register() {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Username</FormLabel>
+          <FormLabel color="neutral.600">Username</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -106,7 +112,7 @@ export default function Register() {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Password</FormLabel>
+          <FormLabel color="neutral.600">Password</FormLabel>
           <Input
             borderRadius="0"
             type="password"
@@ -115,7 +121,7 @@ export default function Register() {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Confirm Password</FormLabel>
+          <FormLabel color="neutral.600">Confirm Password</FormLabel>
           <Input
             type="password"
             borderRadius="0"
@@ -126,7 +132,7 @@ export default function Register() {
 
         <Button
           marginTop="1.2em"
-          color="#532C38"
+          color="neutral.700"
           fontSize="1.3em"
           borderRadius="0"
           onClick={() => (errorMessage ? handleErrorMessage() : handleSubmit())}

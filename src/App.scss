@@ -298,7 +298,8 @@ neutral colors:
 #register-page,
 #view-product-page,
 #profile-page,
-#admin-login-page {
+#admin-login-page,
+#checkout-page {
   min-height: 85vh;
   background-color: #e4d9dc;
   padding: 2em;
@@ -343,10 +344,25 @@ footer h5 {
 
 /* MEDIA QUERIES */
 
+// base: "0px", xxs: "320px", xs: "375px", sm: "425px", smMd: "575px", md: "768px", mgLg: "1024px", lg: "1200px", xl: "1400px",
+
 @media screen and (max-width: 1440px) and (min-width: 401px) {
   .nav-tab-text:hover {
     background-color: white;
     transition: all 0.4s;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  #home {
+    background: linear-gradient(0deg, #4e3b4782, #40333b82),
+      url("https://images.unsplash.com/photo-1630084775816-7abb7383ded5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80");
+    background-size: cover;
+    background-position: center center;
+  }
+
+  #product-sort-filter-cont {
+    display: none;
   }
 }
 
@@ -404,10 +420,6 @@ footer h5 {
 
   /* Home page */
   #home {
-    background: linear-gradient(0deg, #4e3b4782, #40333b82),
-      url("https://images.unsplash.com/photo-1630084775816-7abb7383ded5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80");
-    background-size: cover;
-    background-position: center center;
     height: 90vh;
     min-height: 500px;
   }
@@ -498,5 +510,197 @@ footer h5 {
 
   footer h5 {
     font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  /* Navbar */
+  #navbar {
+    padding: 0.75em;
+  }
+
+  #navbar nav {
+    font-size: 0.65em;
+    gap: 2em;
+  }
+
+  /* Home page */
+
+  #home-content-div {
+    padding: 1em 2em 0 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #home-content-div h1 {
+    font-size: 2.6em;
+  }
+
+  #home-content-div h3 {
+    font-size: 1.3em;
+    padding-bottom: 0.75em;
+  }
+
+  #home-content-div button {
+    font-size: 1.2em;
+  }
+
+  #home-under-landing {
+    height: 95vh;
+    flex-flow: column-reverse;
+  }
+
+  #home-ul-content-cont {
+    padding: 0.75em 1em 0 1em;
+    text-align: left;
+  }
+
+  #home-ul-content-cont h2 {
+    font-size: 1.4em;
+  }
+
+  #home-ul-content-cont p {
+    font-size: 1em;
+  }
+
+  /* Products */
+
+  #products-page {
+    background-color: #e4d9dc;
+    margin-bottom: 2em;
+    padding-top: 2em;
+  }
+
+  #products {
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 0.75em;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lato", sans-serif;
+  }
+
+  .product-cont {
+    width: 95%;
+  }
+
+  /* View Product.jsx */
+  #view-product-page {
+    min-height: 90vh;
+    padding: 2.5em 0.75em 0.75em 0.75em;
+  }
+
+  #product-main-div {
+    flex-flow: column wrap;
+    // justify-content: start;
+  }
+
+  #product-content-div {
+    width: 100%;
+    text-align: left;
+    flex-flow: column wrap;
+    // justify-content: space-between;
+    align-items: start;
+    padding: 1em 0.5em;
+    gap: 1em;
+  }
+
+  /* Login Page */
+  #register-form,
+  #login-form {
+    width: 100%;
+    padding: 2em 1em;
+  }
+
+  #login-page,
+  #register-page {
+    min-height: 90vh;
+    padding: 4em 1em;
+  }
+
+  /* Cart.jsx */
+  #cart-btn {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.25em;
+  }
+
+  #cart {
+    width: 100%;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 0.75em;
+  }
+
+  .cart-product {
+    width: 100%;
+    padding: 0em;
+    gap: 1em;
+  }
+
+  #cart-contents {
+    flex-flow: column wrap;
+    justify-content: space-between;
+    gap: 1em;
+  }
+
+  #cart-list {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 0.5em;
+    width: 100%;
+  }
+
+  #cart-summary {
+    padding: 0.75em;
+    text-align: left;
+  }
+
+  /* checkout.jsx (shipping, payment, confirmCheckout) */
+
+  #checkout-page {
+    min-height: 90vh;
+    background-color: #e4d9dc;
+    padding: 0.75em;
+  }
+
+  .checkout-tabs {
+    width: 100%;
+    margin: 1em auto;
+    padding: 2em 1em;
+    background-color: #d9cacf;
+    min-height: 90vh;
+  }
+
+  #confirm-checkout-cont {
+    min-height: 90vh;
+  }
+
+  #confirm-checkout {
+    width: 100%;
+    margin: 2em auto;
+    padding: 1em;
+    background-color: #d9cacf;
+  }
+
+  #order-status-page {
+    min-height: 90vh;
+    padding: 2em 1em;
+    align-items: center;
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1em;
+  }
+
+  /* Footer */
+
+  footer {
+    min-height: 15vh;
+  }
+
+  footer h5 {
+    font-size: 0.75em;
   }
 }

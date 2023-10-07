@@ -35,11 +35,11 @@ export default function Profile() {
     <section id="profile-page">
       {user && (
         <>
-          <Heading color="#532C38" fontSize={"3.6em"}>
+          <Heading color="brand.700" fontSize={{ base: "2.5em", md: "3.6em" }}>
             {user.userAccount.username}
           </Heading>
           <div>
-            <Text color="#886670" fontSize={"1.3em"}>
+            <Text color="neutral.500" fontSize={{ base: "1em", md: "1.3em" }}>
               {user.userAccount.first_name} {user.userAccount.last_name}
             </Text>
           </div>

@@ -10,7 +10,6 @@ import {
   Stack,
   Heading,
   Text,
-  Divider,
   Button,
   ButtonGroup,
   useToast,
@@ -67,20 +66,13 @@ export default function Products() {
 
   function handleMapping(data) {
     return data.map((product) => (
-      // <div key={product.id} className="product">
-      //   <Link to={`/products/${product.id}`}>View Product</Link>
-      //   <h3 onClick={() => navigate(`/products/${product.id}`)}>
-      //     {product.title}
-      //   </h3>
-      //   <p>${product.price}</p>
-      //   {/* <p>{product.description}</p> */}
-      //   {/* <img src={product.image} alt={product.title} /> */}
-      // </div>
+      // Breakpoints
+      // base: "0px", xxs: "320px", xs: "375px", sm: "425px", smMd: "575px", md: "768px", mgLg: "1024px", lg: "1200px", xl: "1400px",
       <div key={product.id} className="product-cont">
         <Card
           className="product"
           justifyContent="space-between"
-          size={isMobile ? "sm" : "md"}
+          size={{ base: "sm", sm: "md", mdLg: "lg" }}
           borderRadius={0}
         >
           <CardBody display={isMobile ? "flex" : "default"}>
@@ -88,13 +80,22 @@ export default function Products() {
               src={product.product_image}
               alt={product.name}
               onClick={() => navigate(`/products/${product.id}`)}
-              width={isMobile ? "35%" : "100%"}
+              width={{ base: "40%", smMd: "100%" }}
             />
-            <Stack>
-              <Heading size={isMobile ? "sm" : "md"} color="#40212B">
+            <Stack width={{ base: "60%" }}>
+              <Heading
+                fontSize={{ base: "1em" }}
+                textAlign={{ base: "left" }}
+                color="neutral.800"
+                fontFamily="fonts.body"
+              >
                 {product.name}
               </Heading>
-              <Text color="#886670" fontSize={isMobile ? "1.2em" : "1.5em"}>
+              <Text
+                color="neutral.500"
+                fontSize={{ base: "1.2em", md: "1.5em" }}
+                textAlign={{ base: "right" }}
+              >
                 ${product.price}
               </Text>
             </Stack>
@@ -104,15 +105,15 @@ export default function Products() {
               <Button
                 variant="solid"
                 borderRadius="0"
-                color="#B90E41"
-                fontSize={isMobile ? ".7em" : "1em"}
+                color="brand.600"
+                fontSize={{ base: ".7em", md: "1em" }}
                 // padding={isMobile ? ".25em" : "default"}
               >
                 <Link to={`/products/${product.id}`}>View Product</Link>
               </Button>
               <Button
                 variant="ghost"
-                color="#EC507F"
+                color="brand.400"
                 borderRadius="0"
                 fontSize={isMobile ? ".7em" : "1em"}
                 onClick={() => {
@@ -125,7 +126,7 @@ export default function Products() {
                       description:
                         "You must be logged in to add items to your cart.",
                       status: "error",
-                      duration: 5000,
+                      duration: 2000,
                       isClosable: true,
                       position: "bottom",
                     });
@@ -154,8 +155,6 @@ export default function Products() {
     return setFilteredProducts(sortedProducts);
   }
 
-  // const orderButton = order.charAt(0).toUpperCase() + order.slice(1);
-
   function handleFilterCategory(category) {
     setFilteredProducts(products);
     setCategory(category);
@@ -166,56 +165,48 @@ export default function Products() {
     return setFilteredProducts(filteredCategory);
   }
 
-  // function handleFilterPrice(min, max) {
-  //   setFilteredProducts(products);
-  //   const filteredPrice = filter(
-  //     products,
-  //     (product) => product.price >= min && product.price <= max
-  //   );
-  //   return setFilteredProducts(filteredPrice);
-  // }
-
   async function handleAddToCart(product) {
     addToCart(product);
     const response = await fetchAddToCart(JSON.parse(userToken), product.id, 1);
     return response;
   }
 
-  // console.log(filteredProducts);
-
   return (
     <section id="products-page">
       <div id="product-sort-filter-cont">
         <div id="product-sorter">
-          <h3>Sort by: </h3>
+          <Text fontSize={{ base: ".75em", lg: "1em" }}>Sort by: </Text>
           <ButtonGroup>
             <Button
               variant="ghost"
-              color="#EC507F"
+              color="brand.400"
               borderRadius={0}
               onClick={() => {
                 handleSortProducts(sorter, order === "asc" ? "desc" : "asc");
               }}
+              fontSize={{ base: ".5em", lg: ".75em" }}
             >
               {order === "asc" ? "Desc" : "Asc"}
             </Button>
             <Button
               variant="ghost"
-              color="#EC507F"
+              color="brand.400"
               borderRadius={0}
               onClick={() => {
                 handleSortProducts("name");
               }}
+              fontSize={{ base: ".5em", lg: ".75em" }}
             >
               Name
             </Button>
             <Button
               variant="solid"
-              color="#EC507F"
+              color="brand.400"
               borderRadius={0}
               onClick={() => {
                 handleSortProducts("id", "asc");
               }}
+              fontSize={{ base: ".5em", lg: ".75em" }}
             >
               Clear sort
             </Button>
@@ -223,65 +214,71 @@ export default function Products() {
         </div>
 
         <div id="product-filter">
-          <h3>Filter by: </h3>
+          <Text fontSize={{ base: ".75em", lg: "1em" }}>Filter by: </Text>
           <ButtonGroup>
             <Button
               variant="ghost"
-              color="#EC507F"
+              color="brand.400"
               borderRadius={0}
               onClick={() => {
                 handleFilterCategory(1);
               }}
+              fontSize={{ base: ".5em", lg: ".75em" }}
             >
               Lips
             </Button>
             <Button
               variant="ghost"
-              color="#EC507F"
+              color="brand.400"
               borderRadius={0}
               onClick={() => {
                 handleFilterCategory(2);
               }}
+              fontSize={{ base: ".5em", lg: ".75em" }}
             >
               Face
             </Button>
             <Button
               variant="ghost"
-              color="#EC507F"
+              color="brand.400"
               borderRadius={0}
               onClick={() => {
                 handleFilterCategory(3);
               }}
+              fontSize={{ base: ".5em", lg: ".75em" }}
             >
               Eyes
             </Button>
             <Button
               variant="ghost"
-              color="#EC507F"
+              color="brand.400"
               borderRadius={0}
               onClick={() => {
                 handleFilterCategory(5);
               }}
+              fontSize={{ base: ".5em", lg: ".75em" }}
             >
               Highlighters
             </Button>
             <Button
               variant="ghost"
-              color="#EC507F"
+              color="brand.400"
               borderRadius={0}
               onClick={() => {
                 handleFilterCategory(4);
               }}
+              fontSize={{ base: ".5em", lg: ".75em" }}
             >
               Accessories
             </Button>
             <Button
               variant="solid"
-              color="#EC507F"
+              color="brand.400"
               borderRadius={0}
               onClick={() => {
                 setFilteredProducts(products);
               }}
+              fontSize={{ base: ".5em", lg: ".75em" }}
             >
               Clear Category
             </Button>

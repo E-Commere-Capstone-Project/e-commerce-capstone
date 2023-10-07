@@ -19,16 +19,19 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  function checkIfError(input) {
-    return input === "";
-  }
-
   return (
     <div className="checkout-tabs">
-      <Heading color="#532C38">Shipping Information</Heading>
+      <Heading
+        color="brand.700"
+        fontFamily="fonts.body"
+        fontSize={{ base: "1.75em" }}
+        paddingBottom={{ base: ".5em" }}
+      >
+        Shipping Information
+      </Heading>
       <form>
         <FormControl isRequired>
-          <FormLabel color="#734C58">First Name</FormLabel>
+          <FormLabel color="neutral.600">First Name</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -38,7 +41,7 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Last Name</FormLabel>
+          <FormLabel color="neutral.600">Last Name</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -47,7 +50,7 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Address</FormLabel>
+          <FormLabel color="neutral.600">Address</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -56,7 +59,7 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">City</FormLabel>
+          <FormLabel color="neutral.600">City</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -65,7 +68,7 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">State</FormLabel>
+          <FormLabel color="neutral.600">State</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -74,7 +77,7 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">ZIP Code </FormLabel>
+          <FormLabel color="neutral.600">ZIP Code </FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -83,11 +86,17 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
           />
         </FormControl>
         <div>
-          <Heading marginTop="1em" color="#532C38">
+          <Heading
+            marginTop=".75em"
+            color="brand.700"
+            fontFamily="fonts.body"
+            fontSize={{ base: "1.75em" }}
+            paddingBottom={{ base: ".5em" }}
+          >
             Contact Information
           </Heading>
           <FormControl isRequired>
-            <FormLabel color="#734C58">Email Address</FormLabel>
+            <FormLabel color="neutral.600">Email Address</FormLabel>
             <Input
               borderRadius="0"
               type="email"
@@ -96,7 +105,7 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
             />
           </FormControl>
           <FormControl>
-            <FormLabel optionalIndicator color="#734C58">
+            <FormLabel optionalIndicator color="neutral.600">
               Phone Number
             </FormLabel>
             <Input
@@ -116,7 +125,7 @@ export default function Shipping({ onSetActiveStep, activeStep }) {
           <Button
             borderRadius="0"
             marginTop="1.2em"
-            color="#532C38"
+            color="neutral.700"
             fontSize="1.3em"
             onClick={() => {
               onSetActiveStep(activeStep + 1);

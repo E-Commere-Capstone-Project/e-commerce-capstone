@@ -12,7 +12,7 @@ import AdminLogin from "./components/AdminLogin.jsx";
 import AdminAccount from "./components/AdminAccount.jsx";
 import Footer from "./components/Footer.jsx";
 
-import "./App.css";
+import "./App.scss";
 
 import { Routes, Route } from "react-router-dom";
 import { UserProvider } from "./components/context/UserContext.jsx";

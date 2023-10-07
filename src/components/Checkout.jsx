@@ -32,8 +32,7 @@ export default function Checkout() {
   });
 
   return (
-    <>
-      <h2>Checkout</h2>
+    <Box id="checkout-page">
       <Stepper m="1em" p="1em" index={activeStep}>
         {steps.map((step, index) => (
           <Step key={index} onClick={() => setActiveStep(index)}>
@@ -45,7 +44,7 @@ export default function Checkout() {
               />
             </StepIndicator>
 
-            <Box flexShrink="0">
+            <Box flexShrink="0" display={{ base: "none", md: "default" }}>
               <StepTitle>{step.title}</StepTitle>
             </Box>
           </Step>
@@ -72,6 +71,6 @@ export default function Checkout() {
           />
         )}
       </div>
-    </>
+    </Box>
   );
 }

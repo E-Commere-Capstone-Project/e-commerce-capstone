@@ -61,9 +61,15 @@ export default function Login() {
   return (
     <section id="login-page">
       <form method="POST" onSubmit={handleSubmit} id="login-form">
-        <Heading color="#532C38">Sign In</Heading>
+        <Heading
+          color="neutral.700"
+          fontFamily="fonts.body"
+          paddingBottom="1em"
+        >
+          Sign In
+        </Heading>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Username</FormLabel>
+          <FormLabel color="neutral.600">Username</FormLabel>
           <Input
             borderRadius="0"
             type="text"
@@ -72,7 +78,7 @@ export default function Login() {
           />{" "}
         </FormControl>
         <FormControl isRequired>
-          <FormLabel color="#734C58">Password</FormLabel>
+          <FormLabel color="neutral.600">Password</FormLabel>
           <Input
             borderRadius="0"
             type="password"
@@ -84,7 +90,7 @@ export default function Login() {
           flexFlow="row wrap"
           alignItems="center"
           padding="1em 0"
-          color="#532C38"
+          color="neutral.700"
         >
           <Text fontSize="1.2em">Don&apos;t have an account?</Text>
           <Link to="/users/register">

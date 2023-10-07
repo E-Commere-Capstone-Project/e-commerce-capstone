@@ -8,7 +8,7 @@ import {
   AiOutlineUser,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { RiLoginBoxLine } from "react-icons/ri";
+import { RiLoginBoxLine, RiLogoutBoxLine } from "react-icons/ri";
 
 export default function Navbar() {
   const { isLoggedIn, changeIsLoggedIn, cart } = useShopUser();
@@ -71,9 +71,12 @@ export default function Navbar() {
             )}
           </Link>
           {isLoggedIn === true && (
-            <button className="nav-tab-text" onClick={handleLogOut}>
-              Log out
-            </button>
+            <Link className="nav-tab">
+              <button className="nav-tab-text" onClick={handleLogOut}>
+                Log out
+              </button>
+              <RiLogoutBoxLine className="nav-tab-icon" />
+            </Link>
           )}
           <Link to="/cart" className="nav-tab">
             <button className="nav-tab-text">

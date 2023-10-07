@@ -48,15 +48,21 @@ export default function ViewProduct() {
             <Image
               src={product.product_image}
               alt={product.name}
-              maxW={{ base: "100%", sm: "450px" }}
+              maxW={{ base: "100%", md: "450px" }}
             />
           </div>
           <div id="product-content-div">
-            <Heading color="#532C38">{product.name}</Heading>
-            <Text fontSize="1.3em" color="#886670">
+            <Heading
+              color="brand.700"
+              fontFamily="fonts.body"
+              fontSize={{ base: "1.8em" }}
+            >
+              {product.name}
+            </Heading>
+            <Text fontSize={{ base: "1em" }} color="neutral.500">
               {product.description}
             </Text>
-            <Text fontSize="1.3em" color="#886670">
+            <Text fontSize={{ base: "1em" }} color="neutral.700">
               ${product.price}
             </Text>
             <ButtonGroup>

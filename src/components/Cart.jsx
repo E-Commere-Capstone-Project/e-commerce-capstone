@@ -17,12 +17,10 @@ import { NumericFormat } from "react-number-format";
 import { useNavigate } from "react-router-dom";
 import {
   fetchCart,
-  fetchAddToCart,
   fetchUpdateCart,
   fetchRemoveFromCart,
   fetchRemoveCartAll,
 } from "../API/index.js";
-import { update } from "lodash";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 /*
 Needs to import or receive data in relation to the cart itself and other data relevant
@@ -42,9 +40,9 @@ export default function Cart() {
   // console.log(`cart cart`, cart);
 
   useEffect(() => {
+    if (!isLoggedIn) navigate("/users/login");
     async function CartFetch() {
       try {
-        if (!isLoggedIn) navigate("/users/login");
         const data = await fetchCart(JSON.parse(userToken));
 
         // console.log(data);
@@ -96,54 +94,67 @@ export default function Cart() {
     return cart.map((product) => (
       <Card
         key={product.id}
-        direction={{ base: "column", sm: "row" }}
+        direction={{ base: "row", md: "column" }}
         className="cart-product"
         borderRadius="0"
+        display={{ base: "flex" }}
+        flexFlow={{ base: "column wrap" }}
+        gap={{ base: "0" }}
       >
-        <Image
-          objectFit="cover"
-          maxW={{ base: "100%", sm: "200px" }}
-          src={product.product_image}
-          alt={product.name}
-        />
-        <Stack className="cart-product-content">
-          <CardBody>
-            <Heading size="lg" color="#532C38" textAlign={"left"}>
+        <CardBody display={{ base: "flex" }} gap={{ base: "1em" }}>
+          <Image
+            objectFit="cover"
+            width={{ base: "40%", md: "200px" }}
+            src={product.product_image}
+            alt={product.name}
+          />
+          <Stack width={{ base: "60%" }}>
+            <Heading
+              fontFamily="fonts.body"
+              fontSize={{ base: "1em", md: "1.5em" }}
+              color="neutral.700"
+              textAlign={"left"}
+            >
               {product.name}
             </Heading>
-            <Text fontSize="1.3em" color="#734C58" textAlign="left">
+            <Text
+              fontSize={{ base: "1.3em" }}
+              color="neutral.500"
+              textAlign="left"
+            >
               ${product.price}
             </Text>
-          </CardBody>
-          <CardFooter gap="1.5em" alignItems="center">
-            <Button
-              variant="solid"
-              color="#532C38"
-              fontSize={"1.2em"}
-              borderRadius="0"
-              onClick={() => {
-                handleRemoveFromCart(product);
-              }}
-            >
-              Remove from cart
-            </Button>
-            {product.qty > 1 && (
-              <AiOutlineMinus
-                color="#532C38"
-                fontSize={"2em"}
-                onClick={() => handleUpdateCartLess(product)}
-              />
-            )}
-            <Text fontSize="1.3em" color="#734C58">
-              {product.qty}
-            </Text>
-            <AiOutlinePlus
-              color="#532C38"
-              fontSize={"2em"}
-              onClick={() => handleUpdateCartMore(product)}
+          </Stack>
+        </CardBody>
+        <CardFooter gap={{ base: "1em", md: "1.5em" }} alignItems="center">
+          <Button
+            variant="solid"
+            color="neutral.700"
+            fontSize={{ base: ".75em", md: "1.2em" }}
+            borderRadius="0"
+            padding={{ base: ".75em", md: "1em" }}
+            onClick={() => {
+              handleRemoveFromCart(product);
+            }}
+          >
+            Remove from cart
+          </Button>
+          {product.qty > 1 && (
+            <AiOutlineMinus
+              color="neutral.700"
+              fontSize={{ base: "1em", md: "2em" }}
+              onClick={() => handleUpdateCartLess(product)}
             />
-          </CardFooter>
-        </Stack>
+          )}
+          <Text fontSize={{ base: "1em", md: "1.3em" }} color="neutral.600">
+            {product.qty}
+          </Text>
+          <AiOutlinePlus
+            color="neutral.700"
+            fontSize={{ base: "1.5em", md: "2em" }}
+            onClick={() => handleUpdateCartMore(product)}
+          />
+        </CardFooter>
       </Card>
     ));
   }
@@ -157,11 +168,11 @@ export default function Cart() {
     <div id="cart">
       {isLoggedIn && cart.length < 1 && (
         <div>
-          <Heading color="#532C38">There are no items in your cart</Heading>
+          <Heading color="neutral.700">There are no items in your cart</Heading>
           <Button
             onClick={() => navigate("/products")}
             variant="ghost"
-            color="#886670"
+            color="neutral.500"
             borderRadius="0"
           >
             Start shopping now
@@ -173,11 +184,19 @@ export default function Cart() {
         <div>
           {isLoggedIn && cart.length > 0 && (
             <Card id="cart-summary" borderRadius="0">
-              <Heading fontSize={"3.5em"} marginBottom=".5em" color="#532C38">
+              <Heading
+                fontFamily="fonts.body"
+                fontSize={{ base: "2em", md: "3.5em" }}
+                marginBottom=".5em"
+                color="neutral.700"
+              >
                 Cart Summary
               </Heading>
               <Stack>
-                <Text fontSize={"1.3em"} color="#886670">
+                <Text
+                  fontSize={{ base: "1em", md: "1.3em" }}
+                  color="neutral.500"
+                >
                   Subtotal -{" "}
                   <NumericFormat
                     value={cartSubTotal}
@@ -187,13 +206,22 @@ export default function Cart() {
                     displayType={"text"}
                   />
                 </Text>
-                <Text fontSize={"1.3em"} color="#886670">
+                <Text
+                  fontSize={{ base: "1em", md: "1.3em" }}
+                  color="neutral.500"
+                >
                   Shipping and Handling - $0.00
                 </Text>
-                <Text fontSize={"1.3em"} color="#886670">
+                <Text
+                  fontSize={{ base: "1em", md: "1.3em" }}
+                  color="neutral.500"
+                >
                   Taxes - N/A
                 </Text>
-                <Text fontSize={"2em"} color="#734C58">
+                <Text
+                  fontSize={{ base: "1.3em", md: "2em" }}
+                  color="neutral.600"
+                >
                   Total -{" "}
                   <NumericFormat
                     value={cartSubTotal}
@@ -207,8 +235,8 @@ export default function Cart() {
               <CardFooter display="flex" justifyContent="center">
                 <Button
                   onClick={() => navigate("/cart/checkout")}
-                  fontSize={"1.3em"}
-                  color="#734C58"
+                  fontSize={{ base: "1em", md: "1.3em" }}
+                  color="neutral.600"
                   variant="solid"
                   borderRadius={0}
                 >
