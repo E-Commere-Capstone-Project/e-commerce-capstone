@@ -74,6 +74,7 @@ export default function Products() {
           justifyContent="space-between"
           size={{ base: "sm", sm: "md", mdLg: "lg" }}
           borderRadius={0}
+          height="100%"
         >
           <CardBody display={isMobile ? "flex" : "default"}>
             <Image
